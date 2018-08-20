@@ -7,6 +7,6 @@ public class Test_20180820 {
 
     @Test
     public void test1(){
-        System.out.println("-----------------------------------");
+        System.out.println("test1test1test1test1test1test1");
     }
 }
