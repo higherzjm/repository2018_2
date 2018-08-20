@@ -1,4 +1,4 @@
-package com.javase.ryptography.RSA;
+package com.javase.cryptograph.RSA;
 
 import java.io.FileOutputStream;
 import java.security.KeyPair;   
