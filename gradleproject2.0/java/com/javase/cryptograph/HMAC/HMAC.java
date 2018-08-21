@@ -21,10 +21,8 @@ import javax.crypto.spec.SecretKeySpec;
  * 基础加密组件
  */  
 public  class HMAC {
-
     public String secret = "ndE2jdZNFixH9G6Aidsfyf7lYT3PxW";//密钥
     public String message="i am  中国人 123";
-
     /**
      * sha256_HMAC加密
      */
@@ -41,9 +39,7 @@ public  class HMAC {
         } catch (Exception e) {
             System.out.println("Error HmacSHA256 ===========" + e.getMessage());
         }
-        md5_HMAC();
     }
-
     /**
      * md5_HMAC加密
      */

@@ -40,20 +40,16 @@ public class BASE64 {
     }  
 
     public static void main(String[] args) {
-
-     String  str="12345678张三abc";
-
-        try {
-        String  result1= BASE64.encryptBASE64(str.getBytes());
-         System.out.println("result1=====加密数据=========="+result1);
-
-         byte  result2[]= BASE64.decryptBASE64(result1);
-         String  str2=new String(result2);
-         System.out.println("str2========解密数据========"+str2);
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-
+         String  str="12345678张三abc";
+         try {
+             String  result1= BASE64.encryptBASE64(str.getBytes());
+             System.out.println("result1=====加密数据=========="+result1);
+             byte  result2[]= BASE64.decryptBASE64(result1);
+             String  str2=new String(result2);
+             System.out.println("str2========解密数据========"+str2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
