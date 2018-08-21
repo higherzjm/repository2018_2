@@ -89,14 +89,17 @@ public class a_temporary_test {
 
     @Test
     public void test7(){
-        System.out.println(9>>2);//右移2为，相对于除以4
-        System.out.println(11<<2);//左移2为，相对于乘以4
+        System.out.println(9>>2);//右移2为，相当于除以4
+        System.out.println(11<<2);//左移2为，相当于乘以4
 
     }
 
+    /**
+     * 16进制
+     */
     @Test
     public void test8(){
-        int a=0x7fffffff;
+        int a=0xaa;
         System.out.println(a);
     }
 
@@ -121,6 +124,12 @@ public class a_temporary_test {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void test11(){
+       String binaryNum=Integer.toBinaryString(37);//十进制转化为二进制
+       System.out.println(binaryNum);
     }
 
 

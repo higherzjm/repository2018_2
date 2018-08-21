@@ -1,4 +1,4 @@
-package com.javase.hashcode;
+package com.javase.type_hashcode;
 
 import org.junit.Test;
 
@@ -20,7 +20,7 @@ public class Test20180710 {
     public void  test20180716(){
       String a="B";
       int b=a.hashCode()&0x7FFFFFFF;
-      System.out.println("aa hashcode:"+a.hashCode()+":"+b);
+      System.out.println("aa type_hashcode:"+a.hashCode()+":"+b);
       System.out.println("---:"+"朱".hashCode());
       int i=2147483647;//int类型的最大值
       System.out.println(0x7FFFFFFF);
