@@ -9,7 +9,7 @@ public class ClassloaderTest
 
   @Test
   public void test2(){
-    System.out.print("22111122");
+    System.out.print("22111122111111");
   }
 
 }
