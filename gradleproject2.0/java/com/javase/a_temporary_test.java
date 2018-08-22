@@ -132,6 +132,17 @@ public class a_temporary_test {
        System.out.println(binaryNum);
     }
 
+    @Test
+    public void test12(){
+        System.out.println("abc".length());
+        char values[]=new char[2];
+        values[0]='A';values[1]='中';
+        for (char value:values ) {
+            int h = value;
+            System.out.println(h);
+        }
+    }
+
 
 
 }

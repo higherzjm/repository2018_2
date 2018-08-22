@@ -13,7 +13,7 @@ import java.util.Map;
  * 测试公钥加密，私钥解密
  */
 public class Mainclass_TestEncryptAndDecrypt {
-    public static void main(String[] args) throws Exception {  
+    public static void main(String[] args) throws Exception {
         String input = "我是中国abcdefg123456";
         Cipher cipher = Cipher.getInstance("RSA");
         RSAPublicKey pubKey = (RSAPublicKey) PublicKeyReader.get("F:/publicKeyFile");
@@ -53,19 +53,6 @@ public class Mainclass_TestEncryptAndDecrypt {
         System.out.println("解密后的东西: " + new String(plainText));
     }
 
-    @Test
-    public void test11(){
-        String a="我是中国人abcdefg123456";
-        for (int i=0;i<20;i++) {
-            byte[] bytes= new byte[0];
-            try {
-                bytes = a.getBytes("UTF-8");
-                System.out.println(bytes+":"+new String(bytes)+":"+new String(bytes).getBytes("UTF-8"));
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
 
-        }
-    }
-  
+
 }  

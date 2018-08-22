@@ -9,6 +9,9 @@ import org.junit.Test;
 public class Test_20180821 {
 
 
+    /**
+     * 二进制十六进制十进制的转换
+     */
     @Test
     public void test2_20180821(){
         Integer a=100;
