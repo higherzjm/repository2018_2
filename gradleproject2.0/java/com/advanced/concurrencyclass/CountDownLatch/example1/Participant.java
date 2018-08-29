@@ -1,4 +1,4 @@
-package com.advanced.concurrencyclass.CountDownLatch;
+package com.advanced.concurrencyclass.CountDownLatch.example1;
 
 public class Participant implements  Runnable{
     private VideoConference videoConference;  
@@ -20,12 +20,12 @@ public class Participant implements  Runnable{
     }  
   
     public static void main(String[] args){  
-        VideoConference videoConference = new VideoConference(10);  
+        VideoConference videoConference = new VideoConference(2);
         Thread videoThread = new Thread(videoConference);  
         videoThread.start();  
-        for(int i=0; i<10; i++){  
+        for(int i=0; i<2; i++){
             Thread thread = new Thread(new Participant("participant:"+i,videoConference));  
             thread.start();  
-        }  
+        }
     }  
 } 
