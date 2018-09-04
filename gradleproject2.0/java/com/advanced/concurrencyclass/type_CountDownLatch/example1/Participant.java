@@ -1,4 +1,4 @@
-package com.advanced.concurrencyclass.CountDownLatch.example1;
+package com.advanced.concurrencyclass.type_CountDownLatch.example1;
 
 public class Participant implements  Runnable{
     private VideoConference videoConference;  

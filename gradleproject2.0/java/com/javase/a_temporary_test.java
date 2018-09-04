@@ -18,6 +18,18 @@ import java.util.List;
  *
  */
 public class a_temporary_test {
+
+
+    public boolean tryReleaseShared(int arg) {
+        throw new UnsupportedOperationException();
+    }
+    @Test
+    public  void test13(){
+        //死循环
+        for (;;){
+            System.out.println(1000);
+        }
+    }
     @Test
     public  void test1(){
         System.out.println("123");

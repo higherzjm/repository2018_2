@@ -1,4 +1,4 @@
-package com.advanced.concurrencyclass.CountDownLatch.example2;
+package com.advanced.concurrencyclass.type_CountDownLatch.example2;
 
 import org.junit.Test;
 
