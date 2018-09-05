@@ -6,12 +6,15 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Test20180829 {
+/**
+ * lock获取锁，unlock释放锁，await等待，signal唤醒
+ */
+public class ReentrantLock20180829 {
 
     private Lock lock = new ReentrantLock();// 非公平锁
     //private Lock lock = new type_ReentrantLock(true);//公平锁
     public static void main(String[] args)  {
-        Test20180829 test=new Test20180829();
+        ReentrantLock20180829 test=new ReentrantLock20180829();
         test.test3();
         //test.test4();
     }
@@ -102,6 +105,7 @@ public class Test20180829 {
             }
         });
          threadA.setName("线程A");
+
         Thread threadB=new Thread(()->{
                  lock.lock();
             try {

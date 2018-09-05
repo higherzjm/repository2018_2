@@ -18,7 +18,7 @@ public class MyBatisDemo {
 
     public static void main(String[] args) throws FileNotFoundException {
         TestMapper testMapper = getSqlSession().getMapper(TestMapper.class);
-        Test test = testMapper.selectByPrimaryKey(1);
+        cyclicbarrier20180905 test = testMapper.selectByPrimaryKey(1);
     }*/
 
 }

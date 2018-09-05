@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- *  原子类:
+ *  原子类: 要嘛执行完整，要嘛不执行
  */
 public class CASTest {
  
