@@ -9,6 +9,8 @@ import org.junit.Test;
      这新值对其他线程来说是立即可见的。
  2）禁止进行指令重排序，volatile能在一定程度上保证有序性
 
+ 保证一个变量在修改volatile变量时，会让缓存行无效
+
  本代码无法体现
  */
 public class Test20180903 {

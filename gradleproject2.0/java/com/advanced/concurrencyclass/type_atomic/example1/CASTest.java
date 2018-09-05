@@ -5,19 +5,20 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- *  原子类
+ *  原子类:
  */
 public class CASTest {
  
     public static void main(String[] args){
         final Counter cas=new Counter();
+        cas.atomicI.set(999);//初始化值
         List<Thread> ts=new ArrayList(600);
         long start=System.currentTimeMillis();
         for(int j=0;j<100;j++){
             Thread t=new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    for(int i=0;i<1000000;i++){
+                    for(int i=0;i<10000;i++){
                         cas.count();
                         cas.safeCount();
                     }
@@ -45,32 +46,27 @@ public class CASTest {
  
  class Counter {
     public AtomicInteger atomicI=new AtomicInteger(0);
-    public int i=0;
 
-    public  int m=0,m1=0;
+    public int i=0;
     /**
     * 使用CAS实现线程安全计数器,多线程情况下数据也会准
     */
     public void safeCount(){
         for(;;){
-            int i=atomicI.get();
-            boolean suc=atomicI.compareAndSet(i,++i);
+         int  currentValue=atomicI.get();
+            boolean suc=atomicI.compareAndSet(currentValue,++currentValue);
             if(suc){
-                m++;
                 break;
-            }else {
-                m1++;
             }
         }
-        //System.out.println("m:"+m);
-        //System.out.println("m1:"+m1);
+
     }
  
     /**
     * 非线程安全计数器,多线程情况下数据不准
     */
     public void count(){
-        i++;
+        i++;//费原子性的递增
     }
  
 }
