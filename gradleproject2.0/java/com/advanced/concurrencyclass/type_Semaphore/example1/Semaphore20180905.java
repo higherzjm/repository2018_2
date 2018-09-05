@@ -2,10 +2,15 @@ package com.advanced.concurrencyclass.type_Semaphore.example1;
 
 import java.util.concurrent.Semaphore;
 
-public class Test {
+/**
+ * 信号量，acquire 获取;release 释放
+ * 使用到了AbstractQueuedSynchronizer进行处理，有公平锁与非公平锁
+ */
+public class Semaphore20180905 {
     public static void main(String[] args) {
         int N = 7;            //工人数
-        Semaphore semaphore = new Semaphore(5); //机器数目
+        Semaphore semaphore = new Semaphore(5); //机器数目 非公平锁
+        //Semaphore semaphore = new Semaphore(5,true);//公平锁
         for(int i=0;i<N;i++)
             new Worker(i,semaphore).start();
     }

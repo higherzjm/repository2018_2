@@ -4,7 +4,7 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 /**
- * 跟CountDownLatch 类似，指定线程执行完才执行后面的部分
+ * 跟CountDownLatch 类似，指定线程执行完才执行后面的代码
  * 源码内部使用了ReentrantLock锁
  */
 public class cyclicbarrier20180905 {

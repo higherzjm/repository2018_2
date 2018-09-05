@@ -2,12 +2,15 @@ package com.advanced.concurrencyclass.type_ReentrantLock.example2;
 
 import org.junit.Test;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * lock获取锁，unlock释放锁，await等待，signal唤醒
+ * 一个线程进入await等待了，一般需要其他线程进行signal唤醒
+ * 使用到了AbstractQueuedSynchronizer进行处理，有公平锁与非公平锁
  */
 public class ReentrantLock20180829 {
 
@@ -84,7 +87,7 @@ public class ReentrantLock20180829 {
                 lock.lock();
                 while (num.value <= 4) {
                     System.out.println("线程A等待");
-                    conditionA.await();
+                    conditionA.await(5000, TimeUnit.MILLISECONDS);
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();

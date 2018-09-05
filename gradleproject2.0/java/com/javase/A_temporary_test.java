@@ -17,8 +17,7 @@ import java.util.List;
  * Created by zjm on 2017/11/20.
  *
  */
-public class a_temporary_test {
-
+public class A_temporary_test {
 
     public boolean tryReleaseShared(int arg) {
         throw new UnsupportedOperationException();
@@ -157,6 +156,8 @@ public class a_temporary_test {
 
 
 
+
+
 }
 
 class  Student{
@@ -180,3 +181,4 @@ class  Student{
                 '}';
     }
 }
+
