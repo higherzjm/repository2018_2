@@ -11,6 +11,9 @@ import java.util.concurrent.locks.ReentrantLock;
  * lock获取锁，unlock释放锁，await等待，signal唤醒
  * 一个线程进入await等待了，一般需要其他线程进行signal唤醒
  * 使用到了AbstractQueuedSynchronizer进行处理，有公平锁与非公平锁
+ *
+ * 锁状态state:如果所处于可获取状态，其状态为0，当锁初次被线程获取时状态变成1
+ * lock.tryLock()):锁被其他线程持有返回false,否则返回true
  */
 public class ReentrantLock20180829 {
 
@@ -41,7 +44,11 @@ public class ReentrantLock20180829 {
             System.out.println("ThreadName=" + Thread.currentThread().getName()
                     + (" " + (i + 1)));
         }
+
         lock.unlock();
+
+        System.out.println("lock.tryLock():"+lock.tryLock());//锁被其他线程持有返回false,否则返回true
+
     }
 
     private Condition condition=lock.newCondition();
