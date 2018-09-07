@@ -11,10 +11,14 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ReentrantLock20180906 {
     Lock lock=new ReentrantLock();
 
+    public static void main(String[] args){
+        ReentrantLock20180906 reentrantLock20180906=new ReentrantLock20180906();
+        reentrantLock20180906.test1();
+    }
+
     /**
      * lock.tryLock()):锁被其他线程持有返回false,否则返回true
      */
-    @Test
     public void test1(){
         new Thread(new Thread1()).start();
         new Thread(new Thread2()).start();
@@ -25,8 +29,18 @@ public class ReentrantLock20180906 {
         @Override
         public void run() {
             System.out.println("thread1 tryLock:"+lock.tryLock());
-            lock.lock();
-            System.out.println("thread1 获取锁成功");
+            if (lock.tryLock()) {
+                lock.lock();
+                System.out.println("thread1 获取锁成功");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                System.out.println("thread1:锁已被占用");
+            }
+
         }
     }
 
@@ -35,8 +49,17 @@ public class ReentrantLock20180906 {
         @Override
         public void run() {
             System.out.println("thread2 tryLock:"+lock.tryLock());
-            lock.lock();
-            System.out.println("thread2 获取锁成功");
+            if (lock.tryLock()) {
+                lock.lock();
+                System.out.println("thread2 获取锁成功");
+                try {
+                    Thread.sleep(4000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                System.out.println("thread2:锁已被占用");
+            }
         }
     }
 }
