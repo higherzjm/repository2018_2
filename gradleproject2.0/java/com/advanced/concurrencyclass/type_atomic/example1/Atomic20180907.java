@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  *  原子类: 要嘛执行完整，要嘛不执行
  */
-public class CASTest {
+public class Atomic20180907 {
  
     public static void main(String[] args){
         final Counter cas=new Counter();
