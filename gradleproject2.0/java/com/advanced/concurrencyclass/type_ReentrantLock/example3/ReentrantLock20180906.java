@@ -18,6 +18,7 @@ public class ReentrantLock20180906 {
 
     /**
      * lock.tryLock()):锁被其他线程持有返回false,否则返回true
+     * 按正常如果线程1没有释放锁，线程2锁会获取不成功
      */
     public void test1(){
         new Thread(new Thread1()).start();
@@ -29,7 +30,7 @@ public class ReentrantLock20180906 {
         @Override
         public void run() {
             System.out.println("thread1 tryLock:"+lock.tryLock());
-            if (lock.tryLock()) {
+            /*if (lock.tryLock()) {*/
                 lock.lock();
                 System.out.println("thread1 获取锁成功");
                 try {
@@ -37,9 +38,10 @@ public class ReentrantLock20180906 {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }else {
+
+            /*}else {
                 System.out.println("thread1:锁已被占用");
-            }
+            }*/
 
         }
     }
@@ -49,7 +51,7 @@ public class ReentrantLock20180906 {
         @Override
         public void run() {
             System.out.println("thread2 tryLock:"+lock.tryLock());
-            if (lock.tryLock()) {
+            /*if (lock.tryLock()) {*/
                 lock.lock();
                 System.out.println("thread2 获取锁成功");
                 try {
@@ -57,9 +59,9 @@ public class ReentrantLock20180906 {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }else {
+            /*}else {
                 System.out.println("thread2:锁已被占用");
-            }
+            }*/
         }
     }
 }

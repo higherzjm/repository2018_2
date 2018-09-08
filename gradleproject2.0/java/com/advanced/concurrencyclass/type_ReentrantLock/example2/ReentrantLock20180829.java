@@ -99,7 +99,7 @@ public class ReentrantLock20180829 {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
-                lock.unlock();
+                //lock.unlock();
             }
 
             try {
