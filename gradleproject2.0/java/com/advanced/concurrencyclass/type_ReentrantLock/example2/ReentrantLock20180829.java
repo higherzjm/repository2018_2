@@ -94,12 +94,13 @@ public class ReentrantLock20180829 {
                 lock.lock();
                 while (num.value <= 4) {
                     System.out.println("线程A等待");
-                    conditionA.await(5000, TimeUnit.MILLISECONDS);
+                    conditionA.await();
+                    //conditionA.await(5000, TimeUnit.MILLISECONDS);
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
-                //lock.unlock();
+                lock.unlock();
             }
 
             try {
