@@ -41,7 +41,7 @@ public class ReentrantLock20180906 {
             System.out.println("thread1 tryLock:"+lock.tryLock());
             lock.lock();
             System.out.println("thread1 获取锁成功");
-            lock.unlock();
+            //lock.unlock();
         }
     }
 
@@ -63,6 +63,7 @@ public class ReentrantLock20180906 {
             System.out.println("thread3 tryLock:"+lock.tryLock());
             lock.lock();
             System.out.println("thread3 获取锁成功");
+            lock.unlock();
         }
     }
 }

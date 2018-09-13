@@ -3,15 +3,18 @@ package com.advanced.concurrencyclass.type_thread.example1;
 
 import org.junit.Test;
 
+import java.util.concurrent.locks.LockSupport;
+
 /**
  * Created by zjm on 2018/9/6.
  */
 public class Thread20180906 {
     public static void main(String[] args){
         Thread20180906 thread20180906=new Thread20180906();
-        //thread20180906.test_interrupt();
-        //thread20180906.test_join();
-        thread20180906.test_currentThread(1);
+        //thread20180906.test_interrupt();//测试线程中断操作(此中断只是一个状态，线程不会停止)
+        //thread20180906.test_join();//测试等待线程执行完毕程序才执行后面的部分
+        //thread20180906.test_currentThread(1);//测试当前线程
+        thread20180906.test_LockSupport();//测试线程阻塞和唤醒，真正的阻塞和唤醒(代码会停止继续执行)
 
     }
 
@@ -61,6 +64,12 @@ public class Thread20180906 {
        }
    }
 
+   public void test_LockSupport(){
+         Thread thread=new Thread(new Thread4_park());
+         thread.start();//阻塞当前线程
+         new Thread(new Thread4_unpark(thread)).start();//唤醒被阻塞的线程
+   }
+
 
 
      class Thread1 implements  Runnable{
@@ -107,5 +116,34 @@ public class Thread20180906 {
     public void currentThread_outmethod(){
         System.out.println("currentThread_outmethod:"+Thread.currentThread().getName());
         test_currentThread(2);
+    }
+
+    class Thread4_park implements  Runnable{
+        @Override
+        public void run() {
+            System.out.println("Thread4_park开始");
+            LockSupport.park(this);//线程阻塞了
+            System.out.println("Thread4_park结束");
+        }
+    }
+
+    class Thread4_unpark implements  Runnable{
+        private Thread thread;
+
+        public Thread4_unpark(Thread thread) {
+            this.thread = thread;
+        }
+
+        @Override
+        public void run() {
+            System.out.println("Thread4_unpark开始");
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            LockSupport.unpark(thread);//线程唤醒了
+            System.out.println("Thread4_unpark结束");
+        }
     }
 }
