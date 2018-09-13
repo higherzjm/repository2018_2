@@ -41,7 +41,13 @@ public class ReentrantLock20180906 {
             System.out.println("thread1 tryLock:"+lock.tryLock());
             lock.lock();
             System.out.println("thread1 获取锁成功");
-            //lock.unlock();
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("thread1 进入解锁调度");
+            lock.unlock();
         }
     }
 
@@ -52,7 +58,12 @@ public class ReentrantLock20180906 {
             System.out.println("thread2 tryLock:"+lock.tryLock());
             lock.lock();
             System.out.println("thread2 获取锁成功");
-
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("thread2 进入解锁调度");
         }
     }
 
@@ -63,7 +74,12 @@ public class ReentrantLock20180906 {
             System.out.println("thread3 tryLock:"+lock.tryLock());
             lock.lock();
             System.out.println("thread3 获取锁成功");
-            lock.unlock();
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("thread3 进入解锁调度");
         }
     }
 }
