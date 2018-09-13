@@ -26,7 +26,7 @@ public class ReentrantLock20180906 {
      */
     public void test1(){
         new Thread(new Thread1()).start();
-        new Thread(new Thread2()).start();
+        /*new Thread(new Thread2()).start();*/
     }
 
     class Thread1 implements Runnable{
@@ -34,12 +34,9 @@ public class ReentrantLock20180906 {
         @Override
         public void run() {
             System.out.println("thread1 tryLock:"+lock.tryLock());
-            try {
-                lock.lock();
-                System.out.println("thread1 获取锁成功");
-            }finally {
-                lock.unlock();
-            }
+            lock.lock();
+            System.out.println("thread1 获取锁成功");
+
 
 
         }
@@ -49,11 +46,6 @@ public class ReentrantLock20180906 {
 
         @Override
         public void run() {
-           /* try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }*/
             System.out.println("thread2 tryLock:"+lock.tryLock());
             lock.lock();
             System.out.println("thread2 获取锁成功");
