@@ -1,4 +1,4 @@
-package com.j2ee.http;
+package com.j2ee.http_orig;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -38,7 +38,7 @@ public class HttpTest20180917 {
         String entityStr=null;
         try {
             //用get方法发送http请求
-            HttpGet httpGet = new HttpGet("http://vipmerchant.paytos.com/CubeICardMerchantConsole/NewUI/dataProvider/v001_01.jsp?token=tuofu@123456");
+            HttpGet httpGet = new HttpGet("http_orig://vipmerchant.paytos.com/CubeICardMerchantConsole/NewUI/dataProvider/v001_01.jsp?token=tuofu@123456");
             //设置请求和传输超时时间
             RequestConfig requestConfig = RequestConfig.custom()
                     .setSocketTimeout(7000).setConnectTimeout(8000).build();
@@ -83,7 +83,7 @@ public class HttpTest20180917 {
         try {
 
             CloseableHttpClient httpclient = HttpClients.createDefault();;
-            String url="http://new.17track.net/restapi/handlertrack.ashx";
+            String url="http_orig://new.17track.net/restapi/handlertrack.ashx";
             HttpPost httpPost = new HttpPost();
 
             httpPost .setHeader("Accept",      "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");

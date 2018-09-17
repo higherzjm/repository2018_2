@@ -1,4 +1,4 @@
-package com.j2ee.restful;
+package com.j2ee.http_restful;
 
 /**
  * Created by zjm on 2018/7/17.

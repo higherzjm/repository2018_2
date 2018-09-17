@@ -95,7 +95,7 @@
                 document.getElementById('sockJsTransportSelect').style.visibility = 'visible';
             }
             else {
-                if (window.location.protocol == 'http:') {
+                if (window.location.protocol == 'http_orig:') {
                     url = 'ws://' + window.location.host + urlPath;
                 } else {
                     url = 'wss://' + window.location.host + urlPath;

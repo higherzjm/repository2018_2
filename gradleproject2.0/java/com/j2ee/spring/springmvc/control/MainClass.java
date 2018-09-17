@@ -18,7 +18,7 @@ public class MainClass {
 
     @Test
     public void test20180510(){
-        String url="http://localhost:8080/gradleproject2.0/MainController/retjacksonMap.do";
+        String url="http_orig://localhost:8080/gradleproject2.0/MainController/retjacksonMap.do";
         Map<String,String> params=new HashMap<>();
         params.put("name","张三");
         params.put("age","11");

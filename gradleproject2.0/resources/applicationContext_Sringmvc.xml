@@ -19,10 +19,10 @@
           class="org.springframewcontroller.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters">
             <list>
-                <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <bean class="org.springframewhttp_orighttp.converter.StringHttpMessageConverter">
                     <property name="supportedMediaTypes">
                         <list>
-                            <bean class="org.springframework.http.MediaType">
+                            <bean class="org.springframewhttp_orighttp.MediaType">
                                 <constructor-arg index="0" value="text" />
                                 <constructor-arg index="1" value="plain" />
                                 <constructor-arg index="2" value="UTF-8" />
@@ -37,7 +37,7 @@
         <property name="messageConverters">
             <list>
                 <!--
-                <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <bean class="org.springframewhttp_orighttp.converter.StringHttpMessageConverter">
                     <property name="supportedMediaTypes">
                         <list>
                             <value>text/plain;charset=UTF-8</value>

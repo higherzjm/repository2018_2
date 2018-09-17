@@ -1,4 +1,4 @@
-package com.j2ee.restful;
+package com.j2ee.http_restful;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
