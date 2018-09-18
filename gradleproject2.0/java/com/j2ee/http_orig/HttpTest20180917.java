@@ -23,9 +23,13 @@ import java.net.URI;
 
 /**
  * Created by zjm on 2018/9/17.
+ * http原始
  */
 @RequestMapping("/httptest")
 public class HttpTest20180917 {
+    public HttpTest20180917() {
+        System.out.println("HttpTest20180917 初始化");
+    }
 
     @RequestMapping("/get")
     @ResponseBody
