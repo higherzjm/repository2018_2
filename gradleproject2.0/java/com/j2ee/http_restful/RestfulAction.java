@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/restfulAction")
-public class RestfulAction {  
+public class RestfulAction {
+    public RestfulAction() {
+        System.out.println("RestfulAction 初始化");
+    }
 
     // 新增
     @RequestMapping(value = "post", method = RequestMethod.POST)

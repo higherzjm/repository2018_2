@@ -13,6 +13,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -25,6 +26,7 @@ import java.net.URI;
  * Created by zjm on 2018/9/17.
  * http原始
  */
+@Controller
 @RequestMapping("/httptest")
 public class HttpTest20180917 {
     public HttpTest20180917() {
@@ -42,10 +44,10 @@ public class HttpTest20180917 {
         String entityStr=null;
         try {
             //用get方法发送http请求
-            HttpGet httpGet = new HttpGet("http_orig://vipmerchant.paytos.com/CubeICardMerchantConsole/NewUI/dataProvider/v001_01.jsp?token=tuofu@123456");
+            HttpGet httpGet = new HttpGet("http://vipmerchant.paytos.com/CubeICardMerchantConsole/NewUI/dataProvider/v001_01.jsp?token=tuofu@123456");
             //设置请求和传输超时时间
             RequestConfig requestConfig = RequestConfig.custom()
-                    .setSocketTimeout(7000).setConnectTimeout(8000).build();
+                    .setSocketTimeout(20000).setConnectTimeout(80000).build();
             httpGet.setConfig(requestConfig);
 
             System.out.println("执行get请求:...."+httpGet.getURI());
