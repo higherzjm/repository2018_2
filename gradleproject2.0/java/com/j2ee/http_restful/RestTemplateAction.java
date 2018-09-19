@@ -24,8 +24,8 @@ public class RestTemplateAction {
     private RestTemplate template;
 
     /**
-     * http://localhost:8080/gradleproject2.0/restTemplateAction/RestTem.do?method=get
-     * http://localhost:8080/gradleproject2.0/restTemplateAction/RestTem.do?method=post
+     * http://localhost:8080/repository2018_2/restTemplateAction/RestTem.do?method=get
+     * http://localhost:8080/repository2018_2/restTemplateAction/RestTem.do?method=post
      * @param method
      * @return
      */
@@ -36,12 +36,12 @@ public class RestTemplateAction {
             //查找
             if ("get".equals(method)) {
                 user = template.getForObject(
-                        "http_orig://localhost:8080/gradleproject2.0/restfulAction/get.do?param=abcd",
+                        "http://localhost:8080/repository2018_2/restfulAction/get.do?param=abcd",
                         User.class, "呜呜呜呜");
 
                 //getForEntity与getForObject的区别是可以获取返回值和状态、头等信息
                 ResponseEntity<User> re = template.
-                        getForEntity("http_orig://localhost:8080/gradleproject2.0/restfulAction/get.do?param=张三",
+                        getForEntity("http://localhost:8080/repository2018_2/restfulAction/get.do?param=张三",
                                 User.class, "呜呜呜呜");
                 System.out.println(re.getStatusCode());
                 System.out.println(re.getBody().getUsername());
@@ -57,7 +57,7 @@ public class RestTemplateAction {
                 HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(
                         postParameters, headers);
                 user = template.postForObject(
-                        "http_orig://localhost:8080/gradleproject2.0/restfulAction/post.do", requestEntity,
+                        "http://localhost:8080/repository2018_2/restfulAction/post.do", requestEntity,
                         User.class);
             }
         }catch (Exception e){
