@@ -5,6 +5,7 @@ import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
+import net.sf.json.JSONObject;
 import org.junit.Test;
 
 import java.io.File;
@@ -21,6 +22,17 @@ public class A_temporary_test {
 
     public boolean tryReleaseShared(int arg) {
         throw new UnsupportedOperationException();
+    }
+
+    @Test
+    public void test14(){
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.accumulate("name","张三");
+        jsonObject.accumulate("age",18);
+        String str=jsonObject.toString();
+        System.out.println("str:"+str);
+        JSONObject jsonObject1=JSONObject.fromObject(str);
+        System.out.println("jsonObject1:"+jsonObject1.toString());
     }
     @Test
     public  void test13(){

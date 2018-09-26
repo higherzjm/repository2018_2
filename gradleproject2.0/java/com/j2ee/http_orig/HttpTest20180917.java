@@ -17,6 +17,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.net.ssl.SSLContext;
@@ -43,12 +44,7 @@ import java.util.Date;
 @RequestMapping("/httptest")
 public class HttpTest20180917 {
 
-    /**
-     * @param request
-     * @param response
-     * @return
-     * @throws Exception
-     */
+    //get客户端
     @RequestMapping("/get")
     @ResponseBody
     public String httpGet_client(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -92,7 +88,6 @@ public class HttpTest20180917 {
                 e.printStackTrace();
             }
         }
-        System.out.println(((Object)entityStr instanceof  String));
         System.out.println("entityStr:"+entityStr);//打印出来 "{\"dataTime\":\"2018-09-20 15:09;20\",\"msg\":\"success\"}"
         entityStr=entityStr.substring(1,entityStr.length()-1);//去掉前后的双引号
         System.out.println("entityStr2:"+entityStr);//打印出来 {\"dataTime\":\"2018-09-20 15:09;20\",\"msg\":\"success\"}
@@ -104,18 +99,11 @@ public class HttpTest20180917 {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-        System.out.println("entityStr4:"+entityStr);
         return   entityStr;
     }
 
 
-    /**
-     * @param request
-     * @param response
-     * @return
-     * @throws Exception
-     */
+    //post客户端
     @RequestMapping(value = "post")
     @ResponseBody
     public String httpPost_client(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -155,7 +143,7 @@ public class HttpTest20180917 {
         return jsonString.toString();
     }
 
-
+    //get服务端
     @RequestMapping("httpGet_server")
     @ResponseBody
     public String httpGet_server(HttpServletRequest request,HttpServletResponse response){
@@ -167,16 +155,17 @@ public class HttpTest20180917 {
         }else {
             retMsg.accumulate("msg","failure");
         }
-
         return retMsg.toString();
     }
-
-    @RequestMapping(value = "httpPost_server")//,method= RequestMethod.POST,produces="application/json;charset=UTF-8"
+    //post服务端
+    @RequestMapping(value = "httpPost_server",method= RequestMethod.POST,produces="application/json;charset=UTF-8")
     @ResponseBody
     public String httpPost_server(HttpServletRequest request,HttpServletResponse response){
+         //获取请求投参数begin----------------
          String contentType=request.getHeader("Content-Type");
          String  apikey=request.getHeader("Api-key");
          System.out.println("contentType:"+contentType+";apikey:"+apikey);
+        //获取请求投参数end---------------
          String receivedDatas="";
         try {
             receivedDatas=parseStream(request);//解析request数据包
@@ -186,10 +175,11 @@ public class HttpTest20180917 {
         JSONObject jsonObject=JSONObject.fromObject(receivedDatas);
         String name=jsonObject.getString("name");
         String age=jsonObject.getString("age");
-        System.out.println("name:"+name+";age:"+age);
+        System.out.println(name+":"+age+" server received json  data:"+jsonObject.toString());
         return jsonObject.toString();
     }
 
+    //设置信任所有链接
     public static CloseableHttpClient createSSLClientDefault() {
 
         System.setProperty ("jsse.enableSNIExtension", "false");
@@ -215,12 +205,7 @@ public class HttpTest20180917 {
         return HttpClients.createDefault();
     }
 
-    /**
-     * 解析request请求参数
-     * @param httpServletRequest
-     * @return
-     * @throws UnsupportedEncodingException
-     */
+    //解析request请求参数
     public String parseStream(HttpServletRequest httpServletRequest)
             throws UnsupportedEncodingException {
         httpServletRequest.setCharacterEncoding("UTF-8");
