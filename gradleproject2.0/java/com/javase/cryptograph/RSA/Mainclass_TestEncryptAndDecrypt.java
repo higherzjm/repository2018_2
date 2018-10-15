@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 测试公钥加密，私钥解密
+ * 测试公钥加密，私钥解密---非对称加密算法
  */
 public class Mainclass_TestEncryptAndDecrypt {
     public static void main(String[] args) throws Exception {
