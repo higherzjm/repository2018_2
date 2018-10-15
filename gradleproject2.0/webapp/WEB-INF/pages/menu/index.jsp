@@ -40,7 +40,8 @@ System.out.println("basePath2:"+basePath2);
                     <li><a href="<%=basePath2%>static/jsp/servlet.jsp" TARGET="contentiframe"><span>servlet</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/springwebsocket.jsp" TARGET="contentiframe"><span>springwebsocket</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/velocity.jsp" TARGET="contentiframe"><span>velocity</span></a></li>
-                    <li><a href="<%=basePath2%>static/jsp/http.jsp" TARGET="contentiframe"><span>http</span></a></li>
+                    <li><a href="<%=basePath2%>static/jsp/http.jsp" TARGET="contentiframe"><span>http_orig</span></a></li>
+                    <li><a href="<%=basePath2%>static/jsp/rest.jsp" TARGET="contentiframe"><span>http_rest</span></a></li>
                 </ul>
             </li>
             <li class="nav-item">
