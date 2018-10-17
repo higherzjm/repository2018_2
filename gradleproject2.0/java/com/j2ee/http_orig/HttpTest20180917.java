@@ -51,7 +51,7 @@ public class HttpTest20180917 {
         //创建默认的httpClient实例
         HttpEntity entity=null;
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        StatusLine StatusLine=null;
+        StatusLine statusLine=null;
         String entityStr=null;
         try {
             //用get方法发送http请求
@@ -69,8 +69,8 @@ public class HttpTest20180917 {
                 //response实体
                 entity = httpResponse.getEntity();
                 if (null != entity){
-                    StatusLine=httpResponse.getStatusLine();
-                    System.out.println("响应状态码:"+ StatusLine);
+                    statusLine=httpResponse.getStatusLine();
+                    System.out.println("响应状态码:"+statusLine.getStatusCode());
                     entityStr= EntityUtils.toString(entity);
                     System.out.println("响应内容:" + entityStr);
                 }
@@ -91,7 +91,7 @@ public class HttpTest20180917 {
         System.out.println("entityStr:"+entityStr);//打印出来 "{\"dataTime\":\"2018-09-20 15:09;20\",\"msg\":\"success\"}"
         entityStr=entityStr.substring(1,entityStr.length()-1);//去掉前后的双引号
         System.out.println("entityStr2:"+entityStr);//打印出来 {\"dataTime\":\"2018-09-20 15:09;20\",\"msg\":\"success\"}
-        entityStr=entityStr.replace("\\", "");//去掉\符合
+        entityStr=entityStr.replace("\\", "");//去掉\符号
         System.out.println("entityStr3:"+entityStr);//打印出来 :{"dataTime":"2018-09-20 15:09;20","msg":"success"}
         try {
             JSONObject jsonObject=JSONObject.fromObject(entityStr);

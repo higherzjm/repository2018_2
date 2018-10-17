@@ -31,7 +31,7 @@ System.out.println("basePath2:"+basePath2);
     <div  class="nav" align="left" style="width: 200px">
         <ul>
             <li class="nav-item">
-                <a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span style="display: none">j2ee</span><i class="my-icon nav-more"></i></a>
+                <a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span style="display: block">1</span><i class="my-icon nav-more"></i></a>
                 <ul>
                     <li><a href="<%=basePath2%>MainController/springmvcmain.do" TARGET="contentiframe"><span>springmvc</span></a></li>
                     <li><a href="<%=basePath2%>springjdbccontrol/springjdbcmain.do" TARGET="contentiframe"><span>springjdbc</span></a></li>
@@ -41,11 +41,11 @@ System.out.println("basePath2:"+basePath2);
                     <li><a href="<%=basePath2%>static/jsp/springwebsocket.jsp" TARGET="contentiframe"><span>springwebsocket</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/velocity.jsp" TARGET="contentiframe"><span>velocity</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/http.jsp" TARGET="contentiframe"><span>http_orig</span></a></li>
-                    <li><a href="<%=basePath2%>static/jsp/rest.jsp" TARGET="contentiframe"><span>http_rest</span></a></li>
+                    <li><a href="<%=basePath2%>static/jsp/http_rest.jsp" TARGET="contentiframe"><span>http_rest</span></a></li>
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="javascript:;"><i class="my-icon nav-icon icon_2"></i><span style="display: none">技术前沿</span><i class="my-icon nav-more"></i></a>
+                <a href="javascript:;"><i class="my-icon nav-icon icon_2"></i><span style="display: block">2</span><i class="my-icon nav-more"></i></a>
                 <ul>
                     <li><a href="<%=basePath2%>static/jsp/redis.jsp" TARGET="contentiframe"><span>redis</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/websocket.jsp" TARGET="contentiframe"><span>websocket</span></a></li>
@@ -54,7 +54,7 @@ System.out.println("basePath2:"+basePath2);
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span style="display: none">前端</span><i class="my-icon nav-more"></i></a>
+                <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span style="display: block">3</span><i class="my-icon nav-more"></i></a>
                 <ul>
                     <li><a href="javascript:;"><span>javascript</span></a></li>
                     <li><a href="javascript:;"><span>jquery</span></a></li>
@@ -63,7 +63,7 @@ System.out.println("basePath2:"+basePath2);
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span style="display: none">关系型数据库</span><i class="my-icon nav-more"></i></a>
+                <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span style="display: block">4</span><i class="my-icon nav-more"></i></a>
                 <ul>
                     <li><a href="javascript:;"><span>oracle</span></a></li>
                     <li><a href="javascript:;"><span>mysql</span></a></li>
@@ -71,7 +71,7 @@ System.out.println("basePath2:"+basePath2);
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span style="display: none">非关系型数据库</span><i class="my-icon nav-more"></i></a>
+                <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span style="display: block">5</span><i class="my-icon nav-more"></i></a>
                 <ul>
                     <li><a href="javascript:;"><span>mongodb</span></a></li>
                     <li><a href="javascript:;"><span>redis</span></a></li>
