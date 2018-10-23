@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.UUID;
 
 /**
- * 使用restful 调用的服务
+ * restful客户端实例
  */
 @Controller
 @RequestMapping("restTemplateAction")
