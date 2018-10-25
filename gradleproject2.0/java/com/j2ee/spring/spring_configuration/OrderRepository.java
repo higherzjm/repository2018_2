@@ -1,4 +1,4 @@
-package com.j2ee.spring.spring_Configuration;
+package com.j2ee.spring.spring_configuration;
 
 /**
  * Created by zjm on 2018/10/25.

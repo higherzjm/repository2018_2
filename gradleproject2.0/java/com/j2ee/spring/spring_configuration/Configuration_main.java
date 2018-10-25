@@ -1,4 +1,4 @@
-package com.j2ee.spring.spring_Configuration;
+package com.j2ee.spring.spring_configuration;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

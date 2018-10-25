@@ -12,9 +12,9 @@
           <property name="name" value="张三"/>
     </bean>
 
-    <bean id="orderService" class="com.j2ee.spring.spring_Configuration.OrderService">
+    <bean id="orderService" class="com.j2ee.spring.spring_configuration.OrderService">
           <constructor-arg ref="orderRepository"/>
     </bean>
-    <bean id="orderRepository" class="com.j2ee.spring.spring_Configuration.OrderRepository"/>
+    <bean id="orderRepository" class="com.j2ee.spring.spring_configuration.OrderRepository"/>
 
 </beans>

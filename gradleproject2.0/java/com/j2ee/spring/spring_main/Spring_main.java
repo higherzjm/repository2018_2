@@ -1,6 +1,6 @@
 package com.j2ee.spring.spring_main;
 
-import com.j2ee.spring.spring_Configuration.OrderService;
+import com.j2ee.spring.spring_configuration.OrderService;
 import com.j2ee.spring.spring_main.services.InitializingService;
 import com.j2ee.spring.spring_main.services.MainService_Annotation;
 import com.j2ee.spring.spring_main.services.Mainervice_Declarative;
