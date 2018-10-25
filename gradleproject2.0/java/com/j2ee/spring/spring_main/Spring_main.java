@@ -1,5 +1,6 @@
 package com.j2ee.spring.spring_main;
 
+import com.j2ee.spring.spring_Configuration.OrderService;
 import com.j2ee.spring.spring_main.services.InitializingService;
 import com.j2ee.spring.spring_main.services.MainService_Annotation;
 import com.j2ee.spring.spring_main.services.Mainervice_Declarative;
@@ -12,7 +13,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 /**
  * 使用mainh函数初始化spring配置文件
  */
-public class MainClass {
+public class Spring_main {
     public static  void main(String[] args){
 
     }
@@ -54,5 +55,8 @@ public class MainClass {
         Mainervice_Declarative mainervice_declarative=(Mainervice_Declarative)ctx.getBean("MainerviceDeclarative_bean");
         System.out.println("读取name的值:"+mainervice_declarative.getName());
         mainervice_declarative.myAction();
+
+        OrderService orderService=(OrderService)ctx.getBean("orderService");
+        System.out.println(orderService.getName("调用orderService类的getName函数"));
     }
 }

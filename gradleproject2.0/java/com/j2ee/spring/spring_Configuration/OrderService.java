@@ -7,7 +7,7 @@ public class OrderService {
     public  OrderRepository orderRepository;
 
     public OrderService(OrderRepository orderRepository) {
-        System.out.println("初始化orderRepository");
+        System.out.println("初始化OrderService");
         this.orderRepository = orderRepository;
     }
 
