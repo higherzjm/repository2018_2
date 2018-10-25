@@ -5,6 +5,8 @@ import com.j2ee.spring.spring_main.services.MainService_Annotation;
 import com.j2ee.spring.spring_main.services.Mainervice_Declarative;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 /**
@@ -31,7 +33,7 @@ public class MainClass {
     }
 
     /**
-     * InitializingBean----afterPropertiesSet测试
+     * InitializingBean----afterPropertiesSet测试：可以调用注解的bean
      */
     @Test
     public void test2(){
@@ -41,5 +43,16 @@ public class MainClass {
 
         MainService_Annotation mainService_annotation=(MainService_Annotation)factory.getBean("mainserviceannotation");
         mainService_annotation.myAction();
+    }
+
+    /**
+     * 用ClassPathXmlApplicationContext方式初始化声明式bean
+     */
+    @Test
+    public void test3(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:spring_main.xml");
+        Mainervice_Declarative mainervice_declarative=(Mainervice_Declarative)ctx.getBean("MainerviceDeclarative_bean");
+        System.out.println("读取name的值:"+mainervice_declarative.getName());
+        mainervice_declarative.myAction();
     }
 }
