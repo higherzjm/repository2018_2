@@ -9,15 +9,13 @@
     <title>Title</title>
     <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
+        var socket;
         $(function() {
             $("#btnConnection").click(function() {
                 //实现化WebSocket对象，指定要连接的服务器地址与端口
-                var host='ws://localhost:8080/gradleproject1.0/websocket';
-                var socket;
-                if ('WebSocket' in window) {
+                var host=encodeURI('ws://192.168.1.41:8080/repository2018_2/websocket');
+                if (window.WebSocket) {
                     socket = new WebSocket(host);
-                } else if ('MozWebSocket' in window) {
-                    socket = new MozWebSocket(host);
                 } else {
                     alert('提示', '当前浏览器不支持websocket，请更换浏览器');
                     return;
@@ -40,16 +38,15 @@
                 }
             });
 
-            $("#btnSend").click(function() {
-                socket.send("这是来自客户端的消息" + location.href + new Date());
-            });
-
             $("#btnClose").click(function() {
                 socket.close();
             });
         });
-
-        var websocket = new WebSocket('ws://localhost:8080/gradleproject1.0/webSocketServer/bing');
+        function start() {
+            socket.send('hello');
+            return false;
+        }
+       /* var websocket = new WebSocket(encodeURI('ws://192.168.1.41:8080/repository2018_2/webSocketServer'));
 
         websocket.onopen = function (evnt) {
             document.getElementById('messages').innerHTML
@@ -64,12 +61,9 @@
         };
         websocket.onclose = function (evnt) {
             alert('关闭:'+event)
-        };
+        };*/
 
-        function start() {
-            websocket.send('hello');
-            return false;
-        }
+
     </script>
 </head>
 <body style="text-align: left;padding: 10px 0 0 10px">
