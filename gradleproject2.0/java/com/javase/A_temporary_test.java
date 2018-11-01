@@ -10,9 +10,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by zjm on 2017/11/20.
@@ -24,6 +22,32 @@ public class A_temporary_test {
         throw new UnsupportedOperationException();
     }
 
+    public Object getBean(Class clazz) throws Exception {
+        Object object = null;
+        if (new HashMap<>().containsKey(clazz.getSimpleName().toLowerCase())) {
+            object = new HashMap<>().get(clazz.getSimpleName().toLowerCase());
+        } else {
+            throw new Exception("找不到类");
+        }
+        return object;
+    }
+    /**
+     * 调用过时方法
+     */
+    @SuppressWarnings("unchecked")
+    @Test
+    public void test16(){
+       Date date=new Date();
+       date.getDate();
+    }
+    @Test
+    @SuppressWarnings("unchecked")
+    public void test15(){
+        String str="1hangsan";
+        char[] chars = str.toCharArray();
+        chars[0] += 1;
+        System.out.println(String.valueOf(chars));
+    }
     @Test
     public void test14(){
         JSONObject jsonObject=new JSONObject();
