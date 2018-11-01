@@ -2,6 +2,7 @@ package com.advanced.websocket.example_20181029;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
+import java.io.IOException;
 
 @ServerEndpoint(value = "/websocket")
 public class WebSocketTest {
@@ -13,6 +14,11 @@ public class WebSocketTest {
     @OnOpen
     public void onOpen (Session session) {
         System.out.println("onOpen:"+session);
+        try {
+            session.getBasicRemote().sendText("onOpenData");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @OnClose

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" pageEncoding="UTF-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"+request.getServerName() + ":" + request.getServerPort() + path + "/style/";
@@ -13,29 +13,31 @@
         $(function() {
             $("#btnConnection").click(function() {
                 //实现化WebSocket对象，指定要连接的服务器地址与端口
-                var host=encodeURI('ws://192.168.1.41:8080/repository2018_2/websocket');
                 if (window.WebSocket) {
-                    socket = new WebSocket(host);
+                    socket = new WebSocket(encodeURI('ws://'+window.location.host+'/repository2018_2/websocket'));
                 } else {
                     alert('提示', '当前浏览器不支持websocket，请更换浏览器');
                     return;
-                } //打开事件
+                }
+                //发生了错误事件
+                socket.onerror = function() {
+                    alert("onerror:发生了错误");
+                }
+                //打开事件
                 socket.onopen = function() {
-                    alert("Socket 已打开");
+                    alert("onopen:Socket 已打开");
                     socket.send("这是来自客户端的消息" + location.href + new Date());
                 };
+
                 //获得消息事件
                 socket.onmessage = function(msg) {
-                    alert(msg.data);
+                    alert("onmessage:"+msg.data);
                 };
                 //关闭事件
                 socket.onclose = function() {
-                    alert("Socket已关闭");
+                    alert("onclose:Socket已关闭");
                 };
-                //发生了错误事件
-                socket.onerror = function() {
-                    alert("发生了错误");
-                }
+
             });
 
             $("#btnClose").click(function() {
