@@ -27,11 +27,29 @@
             });
         }
 
+
+        function getmsg() {
+            console.info("redis  获取消息")
+            $.ajax( {
+                type : "GET",//(默认: "GET") 请求方式 ("POST" 或 "GET")，
+                url : "send_redis_merssagecontroller/getmsg.do",
+                data : "",
+                async: false,
+                dataType : "text",
+                success : function(data) {
+                    alert(data)
+
+                } ,
+                error:function(data){
+                    console.log('error:'+data);
+                }
+            });
+        }
     </script>
 </head>
 <body style="text-align: left;padding: 10px 0 0 10px">
 <input type="button" value="redis消息队列调用发送消息" onclick="sendmsg()"/>&nbsp;
 <br/><br/>
-
+<input type="button" value="redis消息队列调用获取消息" onclick="getmsg()"/>
 </body>
 </html>

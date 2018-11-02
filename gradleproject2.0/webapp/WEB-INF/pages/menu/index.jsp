@@ -74,7 +74,6 @@ System.out.println("basePath2:"+basePath2);
                 <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span style="display: block">5</span><i class="my-icon nav-more"></i></a>
                 <ul>
                     <li><a href="javascript:;"><span>mongodb</span></a></li>
-                    <li><a href="javascript:;"><span>redis</span></a></li>
                     <li><a href="javascript:;"><span>其他</span></a></li>
                 </ul>
             </li>

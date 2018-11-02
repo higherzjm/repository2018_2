@@ -6,12 +6,15 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 监听接收信息的类
+ */
 @Component("adapterMessageDelegateListener")
 public class AdapterMessageDelegateListener {
 
     //监听Redis消息
     public void handleMessage(Serializable message){
-        System.out.println("redis消息队列接收消息");
+        System.out.println("消息监听----redis消息队列接收消息");
         if(message instanceof MessageVo){
             MessageVo messageVo = (MessageVo) message;
             System.out.println(messageVo.getKey()+":"+messageVo.getDate());
