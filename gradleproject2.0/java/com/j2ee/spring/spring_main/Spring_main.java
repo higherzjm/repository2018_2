@@ -33,6 +33,7 @@ public class Spring_main {
         mainService_annotation.myAction();
     }
 
+
     /**
      * InitializingBean----afterPropertiesSet测试：可以调用注解的bean
      */
