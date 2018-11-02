@@ -92,7 +92,7 @@ public class MainController {
 
     /**
      * 直接返回response输出map字符串流对象
-     * http://localhost:8080/gradleproject2.0/MainController/responseDirectReturnMapStr.do
+     * http://localhost:8080/repository2018_2/MainController/responseDirectReturnMapStr.do
      * @param request
      * @param response
      * @return
@@ -104,6 +104,11 @@ public class MainController {
         map.put("name","张三");
         map.put("age",100);
         map.put("birthday","20180626");
+        try {
+         response.sendRedirect("https://www.baidu.com/");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return map.toString();
     }
     /**
