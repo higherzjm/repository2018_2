@@ -19,7 +19,7 @@ public class Send_REDIS_MessageController {
 
     public void sendMessage(String channel, Serializable message) {
 
-        redisTemplate.convertAndSend(channel, message);//channe消息监听名称必须与配置文件配置的一样
+        redisTemplate.convertAndSend(channel, message);//channel消息监听名称必须与配置文件配置的一样
     }
     //http://localhost:8080/repository2018_2/send_redis_merssagecontroller/sendmsg.do
     @RequestMapping(value = "sendmsg")
