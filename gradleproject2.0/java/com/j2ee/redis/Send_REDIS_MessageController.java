@@ -16,35 +16,54 @@ public class Send_REDIS_MessageController {
     @Resource(name="redisTemplate")
     private RedisTemplate<String, String> redisTemplate;
 
-
+    /**
+     *
+     * @param channel  监听的channel名称
+     * @param message  监听的消息内容
+     */
     public void sendMessage(String channel, Serializable message) {
-
-        redisTemplate.convertAndSend(channel, message);//channel消息监听名称必须与配置文件配置的一样
+        //channel消息监听名称必须与配置文件配置的一样
+        redisTemplate.convertAndSend(channel, message);
     }
     //http://localhost:8080/repository2018_2/send_redis_merssagecontroller/sendmsg.do
     @RequestMapping(value = "sendmsg")
     @ResponseBody
-    public  String sendMessage(){
-       try{
-           MessageVo messageVo = new MessageVo();
-           messageVo.setDate("20171207");
-           messageVo.setKey("tuofuwebservices");
-           List<String> webmatids=new ArrayList<String>();
-           webmatids.add("123"); webmatids.add("456");
-           Map<String,List<String>> webmaidmtaids=new HashMap<String, List<String>>();
-           webmaidmtaids.put("1147",webmatids);
-           messageVo.setWebsitematids(webmaidmtaids);
+    public  String sendMsg() {
+        try {
+            MessageVo messageVo = new MessageVo();
+            messageVo.setDate("20171207");
+            messageVo.setKey("tuofuwebservices");
+            List<String> webmatids = new ArrayList<String>();
+            webmatids.add("123");
+            webmatids.add("456");
+            Map<String, List<String>> webmaidmtaids = new HashMap<String, List<String>>();
+            webmaidmtaids.put("1147", webmatids);
+            messageVo.setWebsitematids(webmaidmtaids);
 
-           redisTemplate.opsForValue().set("name","张三");//设置值
+            //异步发送短信到redis队列
+            sendMessage("msgname", messageVo);//"java",和applicationContext_redis中topic配置一样
+            return "消息发送成功";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "消息发送失败";
+        }
+
+    }
+    //http://localhost:8080/repository2018_2/send_redis_merssagecontroller/setingupalltypemsg.do
+    @RequestMapping(value = "setingupalltypemsg")
+    @ResponseBody
+    public  String setingUpAllTypeMessage(){
+       try{
+           redisTemplate.opsForValue().set("name","sunday");//设置值
            redisTemplate.opsForSet().add("set_123", "set1","set2","set3");//设置set集合
            /**
             * 设置list  begin
             */
 
-           List<String> list1=new ArrayList<String>();
-           list1.add("a1");
+           List<String> list1=Arrays.asList("list1","list2","list3");
+          /* list1.add("a1");
            list1.add("a2");
-           list1.add("a3");
+           list1.add("a3");*/
 
            List<String> list2=new ArrayList<String>();
            list2.add("b1");
@@ -70,19 +89,18 @@ public class Send_REDIS_MessageController {
             * 设置map  end
             */
 
-           //异步发送短信到redis队列
-           sendMessage("msgname", messageVo);//"java",和applicationContext_redis中topic配置一样
-           return "发送成功";
+
+           return "设置成功";
        }catch (Exception e){
            e.printStackTrace();
-           return "发送失败";
+           return "设置失败";
        }
     }
 
     //http://localhost:8080/repository2018_2/send_redis_merssagecontroller/getmsg.do
-    @RequestMapping(value = "getmsg")
+    @RequestMapping(value = "getalltypemsg")
     @ResponseBody
-    public  String getMessage(){
+    public  String getAllTypeMessage(){
         String name=redisTemplate.opsForValue().get("name");//获取值
         System.out.println("name:"+name);
 

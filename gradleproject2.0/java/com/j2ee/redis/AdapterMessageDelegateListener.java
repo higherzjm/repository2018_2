@@ -12,11 +12,11 @@ import java.util.Map;
 @Component("adapterMessageDelegateListener")
 public class AdapterMessageDelegateListener {
 
-    //监听Redis消息
+    //监听Redis消息,监听方法名称需要与配置的一样
     public void handleMessage(Serializable message){
         System.out.println("消息监听----redis消息队列接收消息");
         if(message instanceof MessageVo){
-            MessageVo messageVo = (MessageVo) message;
+            MessageVo messageVo = (MessageVo) message;//强制转化为发送的消息model
             System.out.println(messageVo.getKey()+":"+messageVo.getDate());
             Map<String,List<String>> webmatids= messageVo.getWebsitematids();
             for (Map.Entry<String,List<String>> data:webmatids.entrySet()){

@@ -3,30 +3,44 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:redis="http://www.springframework.org/schema/redis"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
                             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-                            http://www.springframework.org/schema/redis http://www.springframework.org/schema/redis/spring-redis-1.0.xsd">
+                            http://www.springframework.org/schema/redis http://www.springframework.org/schema/redis/spring-redis-1.0.xsd
+                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
     <description>spring-data-redis配置</description>
+    <util:properties id="redisConfig" location="classpath:redis.properties"  />
+    <context:property-placeholder ignore-unresolvable="true" properties-ref="redisConfig"/>
     <context:component-scan base-package="com.j2ee.*" />
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${redis.maxIdle}" />
+        <property name="maxTotal" value="${redis.maxTotal}" />
+        <property name="maxWaitMillis" value="${redis.maxWait}" />
+        <property name="testOnBorrow" value="true" />
+    </bean>
     <bean id="redisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
-        <property name="usePool" value="true"/>
-        <property name="hostName" value="127.0.0.1"/>
-        <property name="port" value="6379"/>
+        <property name="usePool" value="true"/><!--是否使用连接池-->
+        <property name="hostName" value="${redis.host}"/>
+        <property name="port" value="${redis.port}"/>
+        <property name="database" value="1" /><!--配置数据库名称-->
+        <property name="timeout" value="${redis.timeout}" />
+        <property name="poolConfig" ref="poolConfig"/><!--配置连接池-->
     </bean>
 
+    <!--初始化redisTemplate-->
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
         <property name="connectionFactory" ref="redisConnectionFactory"/>
-      <!--  <property name="keySerializer" value="org.springframework.data.redis.serializer.StringRedisSerializer"/>-->
     </bean>
     <bean id="jdkSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
 
     <bean id="messageListener" class="org.springframework.data.redis.listener.adapter.MessageListenerAdapter">
-        <property name="delegate" ref="adapterMessageDelegateListener" /> <!--这里的messageDelegateListener在后面的文件中注解的-->
-        <property name="serializer" ref="jdkSerializer" />
+        <property name="delegate" ref="adapterMessageDelegateListener" /> <!--监听bean的依赖-->
+        <property name="serializer" ref="jdkSerializer" /><!--系列化模式-->
     </bean>
 
     <redis:listener-container>
         <redis:listener ref="messageListener" method="handleMessage" serializer="jdkSerializer" topic="msgname"/>
-    </redis:listener-container>
+    </redis:listener-container><!--messageListener：监听适配的bean;handleMessage：监听适配的方法，
+                              msgname：监听的channel，必须与发送消息时设置的一样-->
 
 </beans>
