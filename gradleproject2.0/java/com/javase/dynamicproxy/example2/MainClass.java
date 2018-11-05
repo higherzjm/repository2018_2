@@ -12,7 +12,7 @@ public class MainClass {
     @Test
     public  void test1(){
         IHello hello = FacadeProxy.newMapperProxy(IHello.class);
-        System.out.println(hello.say("hello world"));
+        System.out.println("返回值:"+hello.say("hello world"));
     }
 
     /**

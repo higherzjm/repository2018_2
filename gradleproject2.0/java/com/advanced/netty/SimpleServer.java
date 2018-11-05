@@ -48,7 +48,8 @@ public class SimpleServer {
             ChannelFuture f = b.bind(port).sync();  
             // 等待服务器 socket 关闭 。  
             f.channel().closeFuture().sync();  
-        } finally {  
+        } finally {
+            //关闭事件流组
             workerGroup.shutdownGracefully();  
             bossGroup.shutdownGracefully();  
         }  
