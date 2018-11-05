@@ -4,8 +4,13 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;  
 import io.netty.channel.ChannelInboundHandlerAdapter;  
   
-public class SimpleServerHandler extends ChannelInboundHandlerAdapter {  
-  
+public class SimpleServerHandler extends ChannelInboundHandlerAdapter {
+    /**
+     * 客户端发送消息后就会进入该方法
+     * @param ctx
+     * @param msg
+     * @throws Exception
+     */
     @Override  
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {  
         System.out.println("SimpleServerHandler.channelRead");  
@@ -33,8 +38,13 @@ public class SimpleServerHandler extends ChannelInboundHandlerAdapter {
         // 当出现异常就关闭连接  
         cause.printStackTrace();  
         ctx.close();  
-    }  
-  
+    }
+
+    /**
+     * 读取数据完成会进行缓存刷新
+     * @param ctx
+     * @throws Exception
+     */
     @Override  
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {  
         ctx.flush();  
