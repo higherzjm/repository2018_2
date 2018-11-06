@@ -31,7 +31,7 @@ public class SimpleServer {
         try {  
             //启动 NIO 服务的辅助启动类  
             ServerBootstrap b = new ServerBootstrap();   
-            b.group(bossGroup, workerGroup)  
+            b.group(bossGroup, workerGroup)
                 //配置 Channel  
                 .channel(NioServerSocketChannel.class)  
                 .childHandler(new ChannelInitializer<SocketChannel>() {   
