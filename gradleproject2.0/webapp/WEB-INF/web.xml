@@ -19,6 +19,9 @@
     <listener>
         <listener-class>com.j2ee.servlet.listeners.My_HttpSessionAttributeListener</listener-class>
     </listener>
+  <!--  <listener>
+        <listener-class>com.j2ee.servlet.listeners.NettyListener</listener-class>
+    </listener>-->
     <!--添加编码	begin-->
     <filter>
         <filter-name>encodingFilter</filter-name>
