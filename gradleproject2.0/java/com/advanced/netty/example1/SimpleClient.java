@@ -7,8 +7,8 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;  
-  
+import io.netty.channel.socket.nio.NioSocketChannel;
+
 public class SimpleClient {  
       
     public void connect(String host, int port) throws Exception {  
@@ -22,7 +22,7 @@ public class SimpleClient {
             b.handler(new ChannelInitializer<SocketChannel>() {  
                 @Override  
                 public void initChannel(SocketChannel ch) throws Exception {  
-                    ch.pipeline().addLast(new SimpleClientHandler());  
+                    ch.pipeline().addLast(new SimpleClientHandler());
                 }  
             });  
   
@@ -37,8 +37,8 @@ public class SimpleClient {
     }  
       
     public static void main(String[] args) throws Exception {  
-        SimpleClient client=new SimpleClient();  
-        client.connect("127.0.0.1", 9999);  
+        SimpleClient client=new SimpleClient();
+        client.connect("127.0.0.1", 1999);
     }  
       
 }  

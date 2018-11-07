@@ -1,9 +1,9 @@
 package com.advanced.netty.example1;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;  
-import io.netty.channel.ChannelInboundHandlerAdapter;  
-  
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+
 public class SimpleServerHandler extends ChannelInboundHandlerAdapter {
     /**
      * 客户端发送消息后就会进入该方法
@@ -13,7 +13,7 @@ public class SimpleServerHandler extends ChannelInboundHandlerAdapter {
      */
     @Override  
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {  
-        System.out.println("SimpleServerHandler.channelRead");  
+        System.out.println("Netty_SimpleServerHandler.channelRead");
         ByteBuf result = (ByteBuf) msg;  
         byte[] result1 = new byte[result.readableBytes()];  
         // msg中存储的是ByteBuf类型的数据，把数据读取到byte[]中  

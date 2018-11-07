@@ -1,14 +1,14 @@
 package com.advanced.netty.example1;
-  
-import io.netty.bootstrap.ServerBootstrap;  
-import io.netty.channel.ChannelFuture;  
-import io.netty.channel.ChannelInitializer;  
-import io.netty.channel.ChannelOption;  
-import io.netty.channel.EventLoopGroup;  
-import io.netty.channel.nio.NioEventLoopGroup;  
-import io.netty.channel.socket.SocketChannel;  
-import io.netty.channel.socket.nio.NioServerSocketChannel;  
-  
+
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+
 /** 
  *  
  * Netty中，通讯的双方建立连接后，会把数据按照ByteBuf的方式进行传输， 
@@ -38,7 +38,7 @@ public class SimpleServer {
                         @Override  
                         public void initChannel(SocketChannel ch) throws Exception {  
                             // 注册handler    
-                            ch.pipeline().addLast(new SimpleServerHandler());  
+                            ch.pipeline().addLast(new SimpleServerHandler());
                         }  
                     })  
                 .option(ChannelOption.SO_BACKLOG, 128)   
@@ -56,6 +56,6 @@ public class SimpleServer {
     }  
       
     public static void main(String[] args) throws Exception {  
-        new SimpleServer(9999).run();  
+        new SimpleServer(1999).run();
     }  
 }  

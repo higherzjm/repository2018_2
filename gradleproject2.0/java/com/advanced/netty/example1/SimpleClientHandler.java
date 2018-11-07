@@ -1,10 +1,11 @@
 package com.advanced.netty.example1;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;  
-import io.netty.channel.ChannelInboundHandlerAdapter;  
-  
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+
 public class SimpleClientHandler extends ChannelInboundHandlerAdapter {
+
     /**
      * 服务端发送消息后就会进入该方法
      * @param ctx
@@ -13,7 +14,7 @@ public class SimpleClientHandler extends ChannelInboundHandlerAdapter {
      */
     @Override  
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {  
-        System.out.println("SimpleClientHandler.channelRead");    
+        System.out.println("Netty_SimpleClientHandler.channelRead");
         ByteBuf result = (ByteBuf) msg;    
         byte[] result1 = new byte[result.readableBytes()];    
         result.readBytes(result1);    
@@ -40,7 +41,7 @@ public class SimpleClientHandler extends ChannelInboundHandlerAdapter {
         String msg = "hello Server!我给你发消息了";
         ByteBuf encoded = ctx.alloc().buffer(4 * msg.length());    
         encoded.writeBytes(msg.getBytes());    
-        ctx.write(encoded);    
+        ctx.write(encoded);
         ctx.flush();    
     }    
 } 
