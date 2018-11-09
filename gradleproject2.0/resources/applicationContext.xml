@@ -11,11 +11,11 @@
     <mvc:annotation-driven/>
     <context:component-scan base-package="com.*" />
 
-    <bean id="websocket" class="com.j2ee.spring.springwebsocket.WebsocketEndPoint"/>
+    <bean id="websocket" class="com.j2ee.spring.spring_websocket.WebsocketEndPoint"/>
     <websocket:handlers>
         <websocket:mapping path="/websocket" handler="websocket"/>
         <websocket:handshake-interceptors>
-            <bean class="com.j2ee.spring.springwebsocket.HandshakeInterceptor"/>
+            <bean class="com.j2ee.spring.spring_websocket.HandshakeInterceptor"/>
         </websocket:handshake-interceptors>
     </websocket:handlers>
 

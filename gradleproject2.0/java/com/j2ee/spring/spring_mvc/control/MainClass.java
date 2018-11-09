@@ -1,4 +1,4 @@
-package com.j2ee.spring.springmvc.control;
+package com.j2ee.spring.spring_mvc.control;
 
 import net.sf.json.JSONObject;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.j2ee.spring.springwebsocket;
+package com.j2ee.spring.spring_websocket;
 
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;

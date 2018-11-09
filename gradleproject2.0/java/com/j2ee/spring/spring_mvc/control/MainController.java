@@ -1,4 +1,4 @@
-package com.j2ee.spring.springmvc.control;
+package com.j2ee.spring.spring_mvc.control;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;

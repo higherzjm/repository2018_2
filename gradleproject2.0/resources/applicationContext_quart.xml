@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		  ">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.j2ee.*" />
+
+    <bean id="springQuartToBatchMonitor" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="srpingquarttotatchbean" />
+        <property name="targetMethod" value="springQuartToBatchMethod" />
+        <property name="concurrent" value="false" />
+    </bean>
+    <bean id="springQuartrMonitor" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="srpingquartbean" />
+    <property name="targetMethod" value="srpingquartMethod" />
+    <property name="concurrent" value="false" />
+     </bean>
+
+    <!--spring quart 发起调用spring batch-->
+    <bean id="springQuartToBatchTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="springQuartToBatchMonitor" />
+        </property>
+        <property name="cronExpression">
+            <value>0 49 14 * * ?</value>
+        </property>
+    </bean>
+    <bean id="springQuartTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="springQuartrMonitor" />
+        </property>
+        <property name="cronExpression">
+            <value>0 11 20 * * ?</value>
+        </property>
+    </bean>
+    <bean name="startQuertz" lazy-init="false" autowire="no"
+          class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="springQuartTrigger" />
+                <ref bean="springQuartToBatchTrigger"/>
+            </list>
+        </property>
+    </bean>
+</beans>

@@ -1,4 +1,4 @@
-package com.j2ee.spring.springjdbc;
+package com.j2ee.spring.spring_jdbc;
 
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:batch="http://www.springframework.org/schema/batch"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.j2ee.*" />
+
+    <batch:job id="mybatchjob" job-repository="jobRepository">
+        <batch:step id="mystep1" next="mysteep2" >
+            <tasklet transaction-manager="transactionManager">
+                <chunk reader="myread" processor="myprocess"
+                       writer="mywrite" commit-interval="1" /> <!--commit-interval提交间距-->
+            </tasklet>
+        </batch:step>
+
+        <batch:step id="mysteep2"  >
+            <tasklet transaction-manager="transactionManager">
+                <chunk reader="myread2"  processor="myprocess2"
+                       writer="mywrite2" commit-interval="1" />
+            </tasklet>
+        </batch:step>
+    </batch:job>
+    <bean id="jobRepository"
+          class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="transactionManager" ref="transactionManager" />
+        <property name="databaseType" value="oracle" />
+    </bean>
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <!-- 基本属性 url、user、password -->
+       <!-- <property name="url" value="jdbc:mysql://192.168.1.14:3306/platform" />
+        <property name="username" value="root" />
+        <property name="password" value="root" />
+        <property name="connectionProperties" value="config.decrypt=true" />
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>-->
+        <!--<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@192.168.1.12:1521:orcl"/>
+        <property name="username" value="CUBE"/>
+        <property name="password" value="CUBE"/>-->
+    </bean>
+    <!-- batch luncher -->
+    <bean id="jobLauncher"
+          class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+        <property name="jobRepository" ref="jobRepository" />
+    </bean>
+    <bean id="jobParameterBulider" class="org.springframework.batch.core.JobParametersBuilder" />
+</beans>

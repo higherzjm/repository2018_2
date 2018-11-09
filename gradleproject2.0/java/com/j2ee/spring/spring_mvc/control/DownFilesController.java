@@ -1,4 +1,4 @@
-package com.j2ee.spring.springmvc.control;
+package com.j2ee.spring.spring_mvc.control;
 
 import jxl.Workbook;
 import jxl.write.Label;
