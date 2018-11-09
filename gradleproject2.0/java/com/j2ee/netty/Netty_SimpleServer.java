@@ -1,11 +1,8 @@
 package com.j2ee.netty;
   
-import io.netty.bootstrap.ServerBootstrap;  
-import io.netty.channel.ChannelFuture;  
-import io.netty.channel.ChannelInitializer;  
-import io.netty.channel.ChannelOption;  
-import io.netty.channel.EventLoopGroup;  
-import io.netty.channel.nio.NioEventLoopGroup;  
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.*;
+import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;  
 import io.netty.channel.socket.nio.NioServerSocketChannel;  
   
@@ -46,8 +43,11 @@ public class Netty_SimpleServer {
   
             // 绑定端口，开始接收进来的连接  
             ChannelFuture f = b.bind(port).sync();  
-            // 等待服务器 socket 关闭 。  
-            f.channel().closeFuture().sync();  
+            Channel channel=f.channel();
+            // 等待服务器 socket 关闭 。
+            ChannelFuture channelFuture=channel.closeFuture();
+            channelFuture.sync();
+            System.out.println("启动结束");
         } finally {
             //关闭事件流组
             workerGroup.shutdownGracefully();  
