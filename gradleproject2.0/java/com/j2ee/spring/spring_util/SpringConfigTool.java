@@ -13,16 +13,21 @@ public class SpringConfigTool implements ApplicationContextAware {
     private static ApplicationContext context;
     private static SpringConfigTool stools = null;
 
+    public SpringConfigTool() {
+        System.out.println("实例化SpringConfigTool");
+    }
+
     /**
      * 初始化springConfig
      * @return
-     */
+
     public SpringConfigTool init(){
         if(stools == null){
             stools = new SpringConfigTool();
         }
         return stools;
     }
+     */
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         setContext(applicationContext);
