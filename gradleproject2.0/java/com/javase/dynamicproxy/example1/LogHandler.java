@@ -20,6 +20,7 @@ public class LogHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println("进入代理对象invoke方法");
         System.out.println("调用前");
         System.out.println("method name:"+method.getName());
         System.out.println("method args:"+ Arrays.toString(args));
