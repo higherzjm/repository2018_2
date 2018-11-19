@@ -30,6 +30,7 @@ public class MyProxy {
                 new Class[]{interfaceClass},new InvocationHandler(){
                     @Override
                     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                        System.out.println("调用代理对象invoke方法");
                         return new Dog();
                     }
                 }
