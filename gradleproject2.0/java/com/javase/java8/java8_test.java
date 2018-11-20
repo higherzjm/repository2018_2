@@ -1,6 +1,6 @@
 package com.javase.java8;
 
-//import java.util.stream.IntStream;
+//import java.utils.stream.IntStream;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.junit.Test;

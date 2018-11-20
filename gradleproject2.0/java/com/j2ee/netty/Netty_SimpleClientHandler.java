@@ -42,6 +42,7 @@ public class Netty_SimpleClientHandler extends ChannelInboundHandlerAdapter {
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("初始化ChannelHandlerContext");
         this.ctx=ctx;
+        sendMsg("测试连接成功后自动发送的消息20181120");
 
     }
 
