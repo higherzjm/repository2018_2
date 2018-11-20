@@ -12,7 +12,7 @@ public class Subscriber extends JedisPubSub {//注意这里继承了抽象类Jed
 
     @Override
     public void onMessage(String channel, String message) {
-        LOGGER.info(String.format("Message. Channel: %s, Msg: %s", channel, message));
+        LOGGER.info(String.format("onMessage 接收消息 Message. Channel: %s, Msg: %s", channel, message));
     }
 
     @Override
