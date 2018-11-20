@@ -9,6 +9,8 @@ import redis.clients.jedis.JedisPoolConfig;
  * 命令行:
  *  SUBSCRIBE china hongkong 订阅频道
  *  publish china hello      对应频道发布消息
+ *
+ * 代码会和命令窗口的进行同步，包括发布和调阅
  */
 public class MainClass {
 
