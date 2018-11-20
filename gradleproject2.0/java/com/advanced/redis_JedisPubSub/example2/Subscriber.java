@@ -17,7 +17,7 @@ public class Subscriber extends JedisPubSub {//注意这里继承了抽象类Jed
 
     @Override
     public void onPMessage(String pattern, String channel, String message) {
-    	LOGGER.info(String.format("PMessage. Pattern: %s, Channel: %s, Msg: %s", 
+    	LOGGER.info(String.format("onPMessage 接收消息 PMessage. Pattern: %s, Channel: %s, Msg: %s",
     	    pattern, channel, message));
     }
 
@@ -36,12 +36,12 @@ public class Subscriber extends JedisPubSub {//注意这里继承了抽象类Jed
     @Override
     public void onPUnsubscribe(String pattern, int subscribedChannels) {
 
-        LOGGER.info("onPUnsubscribe  channel:"+pattern+" ;subscribedChannels:"+subscribedChannels);
+        LOGGER.info("onPUnsubscribe 取消订阅 channel:"+pattern+" ;subscribedChannels:"+subscribedChannels);
     }
 
     @Override
     public void onPSubscribe(String pattern, int subscribedChannels) {
 
-        LOGGER.info("onPSubscribe  channel:"+pattern+" ;subscribedChannels:"+subscribedChannels);
+        LOGGER.info("onPSubscribe 订阅  channel:"+pattern+" ;subscribedChannels:"+subscribedChannels);
     }
 }

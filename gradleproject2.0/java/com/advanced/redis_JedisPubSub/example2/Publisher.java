@@ -27,6 +27,7 @@ public class Publisher {
     public void startPublish() {
         LOGGER.info("Type your message (quit for terminate)");
         try {
+            publisherJedis.publish(channel, "先发一条初始信息aaaaaaaaaaaaaa");
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             while (true) {
                 String line = reader.readLine();
