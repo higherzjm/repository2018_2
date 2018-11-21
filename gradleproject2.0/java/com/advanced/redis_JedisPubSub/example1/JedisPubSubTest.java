@@ -18,7 +18,7 @@ public class JedisPubSubTest {
     private static Logger logger = LoggerFactory.getLogger(JedisPubSubTest.class);
     private String redisHost;
     private Integer redisPort;
-
+    private static Jedis publisherJedis=null;
     private JedisPool jedisPool;
 
     private volatile Map<String,Map<String,Long>> dataMap= new HashMap<>();
@@ -63,20 +63,7 @@ public class JedisPubSubTest {
         @Override
         public void onMessage(String channel, String message) {
             System.out.println(String.format("onMessage 接收消息 Message. Channel: %s, Msg: %s", channel, message));
-           /* RedisMessageModel redisMessageModel= JacksonUtil.toBeanFromStr(message, RedisMessageModel.class);
-            if(redisMessageModel!=null && !redisMessageModel.getClassList().isEmpty()){
-                for(String str:redisMessageModel.getClassList()){
-                    if(dataMap.containsKey(str)){
-                        dataMap.get(str).put(redisMessageModel.getHost(),System.currentTimeMillis());
-                    }else{
-                        dataMap.put(str,new HashMap<String,Long>(){
-                            {
-                                put(redisMessageModel.getHost(),System.currentTimeMillis());
-                            }
-                        });
-                    }
-                }
-            }*/
+
         }
 
         @Override
@@ -134,6 +121,7 @@ public class JedisPubSubTest {
                     //是否需要执行订阅操作
                     if(!isOpen){
                         jedis = jedisPool.getResource();
+                        publisherJedis = jedisPool.getResource();
                         jedis.subscribe(subscriber, "china");//--->调用onSubscribe()方法
                         isOpen=true;
                     }
@@ -159,5 +147,11 @@ public class JedisPubSubTest {
 
     public static void main(String[] args){
         new JedisPubSubTest("127.0.0.1:6379");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        publisherJedis.publish("china", "先发一条初始信息aaaaaaaaaaaaaa");
     }
 }
