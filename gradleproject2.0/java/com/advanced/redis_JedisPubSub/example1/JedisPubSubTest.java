@@ -62,7 +62,8 @@ public class JedisPubSubTest {
 
         @Override
         public void onMessage(String channel, String message) {
-            RedisMessageModel redisMessageModel= JacksonUtil.toBeanFromStr(message, RedisMessageModel.class);
+            System.out.println(String.format("onMessage 接收消息 Message. Channel: %s, Msg: %s", channel, message));
+           /* RedisMessageModel redisMessageModel= JacksonUtil.toBeanFromStr(message, RedisMessageModel.class);
             if(redisMessageModel!=null && !redisMessageModel.getClassList().isEmpty()){
                 for(String str:redisMessageModel.getClassList()){
                     if(dataMap.containsKey(str)){
@@ -75,7 +76,7 @@ public class JedisPubSubTest {
                         });
                     }
                 }
-            }
+            }*/
         }
 
         @Override
@@ -133,7 +134,7 @@ public class JedisPubSubTest {
                     //是否需要执行订阅操作
                     if(!isOpen){
                         jedis = jedisPool.getResource();
-                        jedis.subscribe(subscriber, "registry");//--->调用onSubscribe()方法
+                        jedis.subscribe(subscriber, "china");//--->调用onSubscribe()方法
                         isOpen=true;
                     }
                 } catch (Exception e) {

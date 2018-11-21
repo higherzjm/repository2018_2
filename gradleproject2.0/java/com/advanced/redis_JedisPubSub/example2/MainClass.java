@@ -14,7 +14,7 @@ import redis.clients.jedis.JedisPoolConfig;
  */
 public class MainClass {
 
-    public static final String CHANNEL_NAME = "china";
+    public static final String CHANNEL_NAME = "china";//频道
     public static final String REDIS_HOST = "127.0.0.1";
     public static final int REDIS_PORT = 6379;
 
@@ -41,6 +41,8 @@ public class MainClass {
                 }
             }
         }).start();
+
+        Thread.sleep(2000);
 
         //主线程：发布消息到CHANNEL_NAME频道上
         new Publisher(publisherJedis, CHANNEL_NAME).startPublish();//进入发布程序
