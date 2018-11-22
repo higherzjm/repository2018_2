@@ -73,10 +73,10 @@ public class TestBase {
         System.out.println("pay："+m.get("pay").getClass().getName()); //java.lang.Double
         System.out.println("valid："+m.get("valid").getClass().getName()); //java.lang.Boolean
         System.out.println("birthday："+m.get("birthday").getClass().getName()); //java.lang.Long
-        System.out.println("link："+m.get("link").getClass().getName()); //java.util.LinkedHashMap
-        System.out.println("map："+m.get("map").getClass().getName()); //java.util.LinkedHashMap
-        System.out.println("list："+m.get("list").getClass().getName()); //java.util.ArrayList
-        System.out.println("set："+m.get("set").getClass().getName()); //java.util.ArrayList
+        System.out.println("link："+m.get("link").getClass().getName()); //java.utils.LinkedHashMap
+        System.out.println("map："+m.get("map").getClass().getName()); //java.utils.LinkedHashMap
+        System.out.println("list："+m.get("list").getClass().getName()); //java.utils.ArrayList
+        System.out.println("set："+m.get("set").getClass().getName()); //java.utils.ArrayList
 
         //测试03：map--json
         try {

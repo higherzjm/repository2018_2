@@ -31,7 +31,9 @@ public class SimpleClient {
   
             // Wait until the connection is closed.  
             f.channel().closeFuture().sync();  
-        } finally {  
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
             workerGroup.shutdownGracefully();  
         }  
     }  

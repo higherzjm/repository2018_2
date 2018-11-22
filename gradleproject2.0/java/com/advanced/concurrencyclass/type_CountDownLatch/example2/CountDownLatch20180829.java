@@ -6,7 +6,7 @@ import sun.misc.Unsafe;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * CountDownLatch类位于java.util.concurrent包下，利用它可以实现类似计数器的功能。
+ * CountDownLatch类位于java.utils.concurrent包下，利用它可以实现类似计数器的功能。
  * 比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行，此时就可以利用CountDownLatch来实现这种功能了。
  * 主要方法:countDown 执行一次count减1
  *          await  等待所有指定线程执行完count为0，await后面的代码才可以执行

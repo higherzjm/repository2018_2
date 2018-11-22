@@ -45,10 +45,15 @@ public class SimpleServer {
                 .childOption(ChannelOption.SO_KEEPALIVE, true);   
   
             // 绑定端口，开始接收进来的连接  
-            ChannelFuture f = b.bind(port).sync();  
+            ChannelFuture f = b.bind(port).sync();
+            System.out.println("启动成功,等待服务器 socket 关闭");
             // 等待服务器 socket 关闭 。  
-            f.channel().closeFuture().sync();  
-        } finally {
+            f.channel().closeFuture().sync();
+            System.out.println("服务器 socket 已关闭");
+        }catch (Exception e){
+            System.out.println("启动失败");
+            e.printStackTrace();
+        }finally {
             //关闭事件流组
             workerGroup.shutdownGracefully();  
             bossGroup.shutdownGracefully();  

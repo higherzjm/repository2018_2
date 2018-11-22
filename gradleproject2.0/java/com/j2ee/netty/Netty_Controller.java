@@ -23,7 +23,7 @@ public class Netty_Controller {
     public  String clientConnect() {
         Netty_SimpleClient client=new Netty_SimpleClient();
         try {
-            client.connect("127.0.0.1", 1999);
+            client.connect("127.0.0.1", 8080);
             return "连接成功";
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,7 +39,7 @@ public class Netty_Controller {
     @ResponseBody
     public  String serverLaunch() {
         try {
-            new Netty_SimpleServer(1999).run();
+            new Netty_SimpleServer(8080).run();//不能跟tomcat的端口号一样
             System.out.println("启动成功");
             return "启动成功";
         } catch (Exception e) {
