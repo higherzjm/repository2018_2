@@ -21,10 +21,17 @@ public class Netty_Controller {
     @RequestMapping(value = "/clientConnect")
     @ResponseBody
     public  String clientConnect() {
-        Netty_SimpleClient client=new Netty_SimpleClient();
         try {
-            client.connect("127.0.0.1", 8080);
-            return "连接成功";
+            new Thread(new Netty_SimpleClient("127.0.0.1", 1999)).start();//不能跟tomcat的端口号一样
+            Thread.sleep(3000);
+            if (Netty_SimpleClient.isConnectSuccess){
+                System.out.println("连接成功");
+                return "连接成功";
+            }else {
+                System.out.println("连接失败");
+                return "连接失败";
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             return "连接失败";
@@ -39,9 +46,16 @@ public class Netty_Controller {
     @ResponseBody
     public  String serverLaunch() {
         try {
-            new Netty_SimpleServer(8080).run();//不能跟tomcat的端口号一样
-            System.out.println("启动成功");
-            return "启动成功";
+            new Thread(new Netty_SimpleServer(1999)).start();//不能跟tomcat的端口号一样
+            Thread.sleep(3000);
+            if (Netty_SimpleServer.isStartSuccess){
+                System.out.println("启动成功");
+                return "启动成功";
+            }else {
+                System.out.println("启动失败");
+                return "启动失败";
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             return "启动失败";
@@ -57,7 +71,13 @@ public class Netty_Controller {
     public String senMsg(HttpServletRequest request, HttpServletResponse response){
         String msg=request.getParameter("msg");
         Netty_SimpleClientHandler.sendMsg(msg);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String receiveMsg=Netty_SimpleClientHandler.receiveMsg;
+        System.out.println("返回消息:"+receiveMsg);
         return receiveMsg;
     }
 }

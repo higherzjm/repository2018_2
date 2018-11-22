@@ -53,10 +53,11 @@
 
 
         function sendMsg() {
-            console.info("netty  发送和接收信息")
+            var senValue=$("#senValue").val();
+            console.info("netty  发送和接收信息;senValue:"+senValue)
             $.ajax( {
                 type : "GET",//(默认: "GET") 请求方式 ("POST" 或 "GET")，
-                url : "nettyController/senMsg.do",
+                url : "nettyController/senMsg.do?msg="+senValue,
                 data : "",
                 async: false,
                 dataType : "text",

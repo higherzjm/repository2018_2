@@ -26,14 +26,12 @@ public class SimpleClient {
             // Start the client.
             ChannelFuture channelFuture=b.connect(host, port);
             ChannelFuture f = channelFuture.sync();
-            System.out.println("连接成功");
-  
-            // Wait until the connection is closed.
             Channel channel=f.channel();
             channelFuture=channel.closeFuture();
-            System.out.println("channel.closeFuture");
+            System.out.println("连接成功，等待连接关闭");
+            // Wait until the connection is closed.
             channelFuture.sync();
-            System.out.println("Wait until the connection is closed");
+            System.out.println("连接已关闭");
         }catch (Exception e){
             e.printStackTrace();
         }finally {

@@ -12,14 +12,15 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  * 例如http协议中，就是通过HttpRequestDecoder对ByteBuf数据流进行处理，转换成http的对象。 
  *  
  */  
-public class Netty_SimpleServer {
+public class Netty_SimpleServer implements Runnable{
+    public static Boolean isStartSuccess=false;
     private int port;  
   
     public Netty_SimpleServer(int port) {
         this.port = port;  
     }  
   
-    public void run() throws Exception {  
+    public void run()  {
         //EventLoopGroup是用来处理IO操作的多线程事件循环器  
         //bossGroup 用来接收进来的连接  
         EventLoopGroup bossGroup = new NioEventLoopGroup();   
@@ -44,11 +45,16 @@ public class Netty_SimpleServer {
             // 绑定端口，开始接收进来的连接  
             ChannelFuture f = b.bind(port).sync();  
             Channel channel=f.channel();
-            // 等待服务器 socket 关闭 。
             ChannelFuture channelFuture=channel.closeFuture();
+            System.out.println("启动成功,等待服务器 socket 关闭");
+            isStartSuccess=true;
+            // 等待服务器 socket 关闭 。
             channelFuture.sync();
             System.out.println("启动结束");
-        } finally {
+        }catch (Exception e){
+            isStartSuccess=false;
+            e.printStackTrace();
+        }finally {
             //关闭事件流组
             workerGroup.shutdownGracefully();  
             bossGroup.shutdownGracefully();  
