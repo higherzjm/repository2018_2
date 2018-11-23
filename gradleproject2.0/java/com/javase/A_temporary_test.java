@@ -11,6 +11,7 @@ import org.junit.Test;
 import java.io.File;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.*;
 
 /**
@@ -18,9 +19,21 @@ import java.util.*;
  *
  */
 public class A_temporary_test {
+    /**
+     * 毫秒转为格式化时间
+     */
+    @Test
+    public void test20(){
+        System.out.println(System.currentTimeMillis());
+        Date date=new Date(System.currentTimeMillis());
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date));
+        date=(Date.from(Instant.ofEpochMilli(Long.valueOf(System.currentTimeMillis()))));//java8的函数
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date));
+    }
 
     @Test
     public void test19(){
+
         Enumeration<String>[] enumerations = (Enumeration<String>[]) new Enumeration<?>[2];
     }
 
