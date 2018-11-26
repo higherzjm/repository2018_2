@@ -31,7 +31,7 @@ public class MainClass {
     @Test
     public void test2() throws Exception{
         InputStream fis=null;
-        //fis = A_temporary_test.class.getClassLoader().getResourceAsStream("redis.properties");// 可以读取
+        //fis = A_temporary_test.class.getClassLoader().getResourceAsStream("mytxt.txt");// 可以读取
         //方法2
         fis = ClassLoader.getSystemResourceAsStream("mytxt.txt");
         BufferedReader br = new BufferedReader(new InputStreamReader(fis, "gbk"));
