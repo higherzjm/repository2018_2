@@ -5,6 +5,7 @@ import com.j2ee.netty.Netty_SimpleClientHandler;
 import com.j2ee.netty.Netty_SimpleServer;
 import com.j2ee.spring.spring_util.SpringConfigTool;
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.support.SimpleJobLauncher;
 import org.springframework.stereotype.Controller;
@@ -38,7 +39,7 @@ public class SpringBatch_Controller {
             System.out.println("------------------myFirstBatchJob-----------------");
             Job myFirstBatchJob= (Job) SpringConfigTool.getBean("mybatchjob");
             jobParameterBulider.addDate("date", new Date());
-            org.springframework.batch.core.JobExecution jobExecution= null;
+            JobExecution jobExecution= null;
             jobExecution = simpleJobLauncher.run(myFirstBatchJob, jobParameterBulider.toJobParameters());
             System.out.println("------------------myJob:"+jobExecution.getStatus());
             return "发起成功";
