@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
@@ -41,7 +42,7 @@ public class MainController {
     }
 
     //http://localhost:8080/gradleproject2.0/MainController/mainmethod.do
-    @RequestMapping(value = "mainmethod")
+    @RequestMapping(value = "mainmethod",method = RequestMethod.GET,produces = {"text/html;charset=utf-8"})
     public String mainmethod(HttpServletRequest request, HttpServletResponse response){
         logger.info("登入");
         return "menu/index";
