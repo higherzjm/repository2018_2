@@ -13,7 +13,7 @@ public class WebSocketTest {
     }
     @OnOpen
     public void onOpen (Session session) {
-        System.out.println("onOpen:"+session);
+        System.out.println("onOpen建立连接时会进来:"+session);
         try {
             session.getBasicRemote().sendText("onOpenData");
         } catch (IOException e) {
