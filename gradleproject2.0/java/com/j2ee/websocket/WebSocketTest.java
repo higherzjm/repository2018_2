@@ -1,4 +1,4 @@
-package com.advanced.websocket.example_20181029;
+package com.j2ee.websocket;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
@@ -6,6 +6,10 @@ import java.io.IOException;
 
 @ServerEndpoint(value = "/websocket")
 public class WebSocketTest {
+    public WebSocketTest() {
+        System.out.println("初始化WebSocketTest");//连接的时候初始化
+    }
+
     @OnMessage
     public void onMessage(String message)
             throws Exception {

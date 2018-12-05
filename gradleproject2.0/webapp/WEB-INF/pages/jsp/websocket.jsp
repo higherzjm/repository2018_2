@@ -14,7 +14,7 @@
             $("#btnConnection").click(function() {
                 //实现化WebSocket对象，指定要连接的服务器地址与端口
                 if (window.WebSocket) {
-                    websocket1 = new WebSocket(encodeURI('ws://127.0.0.1:8080/repository2018_2/websocket'));
+                    websocket1 = new WebSocket(encodeURI('ws://127.0.0.1:8080/repository2018/websocket'));
                 } else {
                     alert('提示', '当前浏览器不支持websocket，请更换浏览器');
                     return;
@@ -39,7 +39,6 @@
                 };
 
             });
-
             $("#btnConnection2").click(function() {
                 websocket2 = new WebSocket(encodeURI('ws://127.0.0.1:8081/Batch/websocket'));//ws://180.153.201.159:8080/
                 websocket2.onopen = function() {
@@ -60,11 +59,14 @@
             });
         });
         function send1() {
-            socket1.send('hello');
+            websocket1.send('hello');
             return false;
         }
-        function send2() {
-            socket2.send('hello');
+        function send2(content) {
+            var  sendJsonstr={"from":"邓彬",
+                           "timestamp":new Date().getTime(),
+                       "type":"message","content":content};
+            websocket2.send(JSON.stringify(sendJsonstr));
             return false;
         }
 
@@ -72,11 +74,11 @@
     </script>
 </head>
 <body style="text-align: left;padding: 10px 0 0 10px">
-  <input  type="button"  value="连接1" style="background-color: red;color: white;size: 20px" id="btnConnection"/>&nbsp;
+  <input  type="button"  value="本机连接" style="background-color: red;color: white;size: 20px" id="btnConnection"/>&nbsp;
   <input type="button" value="发送消息1" onclick="send1()"/>
 <br><br>
-  <input  type="button"  value="连接2" style="background-color: red;color: white;size: 20px" id="btnConnection2"/>&nbsp;
-  <input type="button" value="发送消息2" onclick="send2()"/>
+  <input  type="button"  value="远程连接" style="background-color: red;color: white;size: 20px" id="btnConnection2"/>&nbsp;
+  <input type="button" value="发送消息2" onclick="send2(1)"/>
 
 </body>
 </html>
