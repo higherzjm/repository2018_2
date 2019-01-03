@@ -34,6 +34,7 @@ System.out.println("basePath2:"+basePath2);
                 <a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span style="display: block">1</span><i class="my-icon nav-more"></i></a>
                 <ul>
                     <li><a href="<%=basePath2%>MainController/springmvcmain.do" TARGET="contentiframe"><span>springmvc</span></a></li>
+                    <li><a href="<%=basePath2%>springInterceptorController/interceptormethod.do?date=20190103&name='张三'" TARGET="contentiframe"><span>spring_Interceptor</span></a></li>
                     <li><a href="<%=basePath2%>springjdbccontrol/springjdbcmain.do" TARGET="contentiframe"><span>springjdbc</span></a></li>
                     <li><a href="<%=basePath2%>user/index.do" TARGET="contentiframe"><span>springmvcibatis</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/downfiles.jsp" TARGET="contentiframe"><span>文件下载</span></a></li>
