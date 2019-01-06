@@ -11,7 +11,17 @@
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:/applicationContext.xml,classpath:/applicationContext_*.xml</param-value>
+        <param-value>classpath:/applicationContext.xml,
+            classpath:/applicationContext_mvc.xml,
+            classpath:/applicationContext_redis.xml,
+            classpath:/applicationContext_restful.xml,
+            classpath:/applicationContext_jms.xml,
+            classpath:/applicationContext_batch.xml
+            classpath:/applicationContext_jdbc.xml<!--,
+            classpath:/applicationContext_quart.xml,
+            classpath:/applicationContext_rmiserver.xml,
+            classpath:/applicationContext_velocity.xml-->
+        </param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -66,7 +76,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath*:/applicationContext_Sringmvc.xml</param-value>
+            <param-value>classpath*:/applicationContext_mvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

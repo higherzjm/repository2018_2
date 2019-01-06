@@ -1,4 +1,4 @@
-package com.j2ee.spring_interceptor;
+package com.j2ee.spring.spring_interceptor;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

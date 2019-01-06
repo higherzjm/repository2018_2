@@ -1,4 +1,4 @@
-package com.j2ee.spring.spring_mvc.interceptor;
+package com.j2ee.spring.spring_interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +27,7 @@ public class MyInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
             Object object) throws Exception {
         System.out.println("preHandle请求前:"+request.getServletPath()+";ParameterMap:"+request.getParameterMap());
-        if ("/springInterceptorController/interceptormethod.do".equals(request.getServletPath())){
+        if ("/springInterceptorController/interceptormethod2.do".equals(request.getServletPath())){
             System.out.println("HandlerInterceptor-------->date:"+request.getParameter("date")+";name:"+request.getParameter("name"));
             return false;//无法进行成功跳转
         }else {

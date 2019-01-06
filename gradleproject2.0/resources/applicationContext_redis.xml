@@ -22,7 +22,7 @@
         <property name="usePool" value="true"/><!--是否使用连接池-->
         <property name="hostName" value="${redis.host}"/>
         <property name="port" value="${redis.port}"/>
-        <property name="password" value="123456"/>
+       <!-- <property name="password" value="123456"/>-->
         <property name="database" value="1" /><!--配置数据库名称-->
         <property name="timeout" value="${redis.timeout}" />
         <property name="poolConfig" ref="poolConfig"/><!--配置连接池-->

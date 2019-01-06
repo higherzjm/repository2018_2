@@ -37,9 +37,11 @@ System.out.println("basePath2:"+basePath2);
                     <li><a href="<%=basePath2%>springInterceptorController/interceptormethod.do?date=20190103&name='张三'" TARGET="contentiframe"><span>spring_Interceptor</span></a></li>
                     <li><a href="<%=basePath2%>springjdbccontrol/springjdbcmain.do" TARGET="contentiframe"><span>springjdbc</span></a></li>
                     <li><a href="<%=basePath2%>user/index.do" TARGET="contentiframe"><span>springmvcibatis</span></a></li>
+                    <li><a href="<%=basePath2%>springaopmaincontroller/mainindex.do" TARGET="contentiframe"><span>spring_aop</span></a></li>
+                    <li><a href="<%=basePath2%>static/jsp/springbatch.jsp" TARGET="contentiframe"><span>spring_batch</span></a></li>
+                    <li><a href="<%=basePath2%>static/jsp/springwebsocket.jsp" TARGET="contentiframe"><span>springwebsocket</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/downfiles.jsp" TARGET="contentiframe"><span>文件下载</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/servlet.jsp" TARGET="contentiframe"><span>servlet</span></a></li>
-                    <li><a href="<%=basePath2%>static/jsp/springwebsocket.jsp" TARGET="contentiframe"><span>springwebsocket</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/velocity.jsp" TARGET="contentiframe"><span>velocity</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/http.jsp" TARGET="contentiframe"><span>http_orig</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/http_rest.jsp" TARGET="contentiframe"><span>http_rest</span></a></li>
@@ -53,7 +55,6 @@ System.out.println("basePath2:"+basePath2);
                     <li><a href="<%=basePath2%>static/jsp/websocekt_tomcatexample.xhtml" TARGET="contentiframe"><span>websocekt_tomcatexample</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/jms.jsp" TARGET="contentiframe"><span>jms</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/netty.jsp" TARGET="contentiframe"><span>netty</span></a></li>
-                    <li><a href="<%=basePath2%>static/jsp/springbatch.jsp" TARGET="contentiframe"><span>spring_batch</span></a></li>
                 </ul>
             </li>
             <li class="nav-item">
