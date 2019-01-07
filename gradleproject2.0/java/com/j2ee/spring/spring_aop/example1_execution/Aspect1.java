@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Component
+@Component("Aspect1")
 @Aspect
 public class Aspect1 {
 

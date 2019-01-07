@@ -68,14 +68,31 @@
                 }
             });
         }
+
+        function test4() {
+            $.ajax( {
+                type : "POST",//(默认: "GET") 请求方式 ("POST" 或 "GET")，
+                url : "<%=basePath2%>addresscontroller/getaddress.do",
+                data :'',
+                async: false,
+                dataType : "json",
+                success : function(data) {
+                    alert("success:"+data)
+                } ,
+                error:function(data){
+                    alert("error:"+data)
+                }
+            });
+        }
     </script>
 </head>
 <body style="text-align: left;margin-top: 20px">
-<input type="button" onclick="test1(true)" value="测试1_存在异常的情况"/>&nbsp;
-<input type="button" onclick="test1(false)" value="测试1_正常执行的情况"/>&nbsp;
-<input type="button" onclick="test2('张三')" value="测试2_正常执行的情况"/>&nbsp;
-<input type="button" onclick="test2('李四')" value="测试2_存在异常的情况"/>&nbsp;
-<input type="button" onclick="test3()" value="测试3_不在切入点的情况"/>&nbsp;
+<input type="button" onclick="test1(true)" value="测试1_execution切入点目标代码存在异常的情况"/><br><br>
+<input type="button" onclick="test1(false)" value="测试1_execution切入点目标代码正常执行的情况"/><br><br>
+<input type="button" onclick="test2('张三')" value="测试2_execution切入点目标代码正常执行的情况"/><br><br>
+<input type="button" onclick="test2('李四')" value="测试2_execution切入点目标代码存在异常的情况"/><br><br>
+<input type="button" onclick="test3()" value="测试3_不在切入点的情况"/><br><br>
+<input type="button" onclick="test4()" value="测试4_Annotation切入点"/><br><br>
 
 </body>
 </html>

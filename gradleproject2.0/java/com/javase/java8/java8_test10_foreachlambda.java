@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by zjm on 2017/8/3.
  */
-public class jsva8_test10_foreachlambda {
+public class java8_test10_foreachlambda {
     @Test
     public void  list(){
         List<String> list=new ArrayList<>();
