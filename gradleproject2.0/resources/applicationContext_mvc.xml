@@ -11,21 +11,16 @@
     <context:annotation-config/>
     <context:component-scan base-package="com.j2ee.*" />
     <bean class="com.j2ee.spring.spring_aop.example2_annotation.AddressAspect1"/>
+    <!--二选一 -->
     <aop:aspectj-autoproxy />
     <!--二选一 -->
-    <!--<aop:aspectj-autoproxy>
-        <aop:include name="AddressAspect1" />
-        <aop:include name="Aspect1" />
-    </aop:aspectj-autoproxy>
-    -->
+<!--    <aop:aspectj-autoproxy>
+       <aop:include name="mappingJackson2HttpMessageConverterInterceptor" />
+    </aop:aspectj-autoproxy>-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/" />
         <property name="suffix" value=".jsp" />
     </bean>
-    <!-- <aop:aspectj-autoproxy>
-        <aop:include name="translateInterceptor" />
-        <aop:include name="mappingJackson2HttpMessageConverterInterceptor" />
-    </aop:aspectj-autoproxy>-->
     <mvc:annotation-driven>
          <mvc:message-converters >
              <bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter">

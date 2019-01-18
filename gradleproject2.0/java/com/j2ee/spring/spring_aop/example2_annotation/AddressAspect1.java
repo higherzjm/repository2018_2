@@ -19,10 +19,10 @@ public class AddressAspect1 {
 
     @Before(value= "addressPointCuts() && @annotation(adressAnnotation)",argNames="joinPoint,adressAnnotation")
     public void before(JoinPoint joinPoint,AdressAnnotation adressAnnotation) {
+        Object object=joinPoint.getTarget();
+        System.out.println("object:"+object);
         System.out.println("示例2切面before增强方法:"+adressAnnotation.province()+" "+adressAnnotation.city()
                 +" "+adressAnnotation.isforeign()+" "+ adressAnnotation.countyNum());
         System.out.println("[AddressAspect1] before advise");
-
-
     }
 }

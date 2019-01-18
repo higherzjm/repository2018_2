@@ -60,7 +60,7 @@ public class TestBase {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        System.out.println(json);
+        System.out.println("json"+json);
 
         //测试02：json--map
         Map m = null; //json转换成map
@@ -115,17 +115,16 @@ public class TestBase {
      */
     @Test
     public void JsonStrToMap(){
-        String str="";
+        String str="",str2="";
         str="{\"name\":\"张三\",\"age\":11,\"birthday\":\"20180901\"}";
         JSONObject jsonObject=new JSONObject();
         jsonObject.accumulate("name","张三");
         jsonObject.accumulate("age",11);
         jsonObject.accumulate("birthday","20180901");
-        //str=jsonObject.toString();
-        System.out.println("Str:"+str);
+        str2=jsonObject.toString();
+        System.out.println("Str:"+str+";str2:"+str2);
         Map<String,Object> map=JacksonUtil.toBeanFromStr(str,Map.class);
         System.out.println("map:"+map);
-
     }
 }
 class Link
