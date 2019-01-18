@@ -10,13 +10,13 @@
           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
     <context:annotation-config/>
     <context:component-scan base-package="com.j2ee.*" />
-    <bean class="com.j2ee.spring.spring_aop.example2_annotation.AddressAspect1"/>
+
     <!--二选一 -->
     <aop:aspectj-autoproxy />
     <!--二选一 -->
-<!--    <aop:aspectj-autoproxy>
-       <aop:include name="mappingJackson2HttpMessageConverterInterceptor" />
-    </aop:aspectj-autoproxy>-->
+   <aop:aspectj-autoproxy>
+       <aop:include name="aspectJackson" />
+    </aop:aspectj-autoproxy>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/" />
         <property name="suffix" value=".jsp" />

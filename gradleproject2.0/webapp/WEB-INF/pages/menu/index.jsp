@@ -55,6 +55,7 @@ System.out.println("basePath2:"+basePath2);
                     <li><a href="<%=basePath2%>static/jsp/websocekt_tomcatexample.xhtml" TARGET="contentiframe"><span>websocekt_tomcatexample</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/jms.jsp" TARGET="contentiframe"><span>jms</span></a></li>
                     <li><a href="<%=basePath2%>static/jsp/netty.jsp" TARGET="contentiframe"><span>netty</span></a></li>
+                    <li><a href="<%=basePath2%>jacksonController/index.do" TARGET="contentiframe"><span>jackson</span></a></li>
                 </ul>
             </li>
             <li class="nav-item">

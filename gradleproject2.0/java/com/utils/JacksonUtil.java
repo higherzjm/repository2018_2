@@ -8,12 +8,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonParseException;
 import org.slf4j.LoggerFactory;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
 
 public class JacksonUtil {
-    private static Logger logger = (Logger) LoggerFactory.getLogger(JacksonUtil.class);
     private static ObjectMapper objectMapper;
 
     public static <T> T toBeanFromStr(String jsonString,Class<T> c){
@@ -26,13 +26,10 @@ public class JacksonUtil {
             return t;
         } catch (JsonMappingException e) {
             e.printStackTrace();
-            logger.info(e.getMessage());
         } catch (JsonParseException e) {
             e.printStackTrace();
-            logger.info(e.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
-            logger.info(e.getMessage());
         }
         return null;
     }
@@ -54,13 +51,10 @@ public class JacksonUtil {
             return t;
         } catch (JsonMappingException e) {
             e.printStackTrace();
-            logger.info(e.getMessage());
         } catch (JsonParseException e) {
             e.printStackTrace();
-            logger.info(e.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
-            logger.info(e.getMessage());
         }
         return null;
     }
@@ -74,11 +68,25 @@ public class JacksonUtil {
             return jsonStr;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-            logger.info(e.getMessage());
         }
         return null;
     }
-
+    /**
+     * 转json并output返回
+     * @param obj
+     * @param response
+     */
+    public static void toStrFromBean(Object obj,HttpServletResponse response)  {
+        response.setContentType("text/html;charset=UTF-8");
+        if(objectMapper==null){
+            objectMapper=new ObjectMapper();
+        }
+        try {
+            objectMapper.writeValue(response.getOutputStream(), obj);
+        } catch (IOException e) {
+           e.printStackTrace();
+        }
+    }
 
 
 }

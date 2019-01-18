@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.utils.JacksonUtil;
 import net.sf.json.JSONObject;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -123,7 +124,7 @@ public class TestBase {
         jsonObject.accumulate("birthday","20180901");
         str2=jsonObject.toString();
         System.out.println("Str:"+str+";str2:"+str2);
-        Map<String,Object> map=JacksonUtil.toBeanFromStr(str,Map.class);
+        Map<String,Object> map= JacksonUtil.toBeanFromStr(str,Map.class);
         System.out.println("map:"+map);
     }
 }
@@ -263,59 +264,3 @@ class User
     }
 }
 
-class JacksonUtil {
-    private static Logger logger = LoggerFactory.getLogger(JacksonUtil.class);
-    private static ObjectMapper objectMapper;
-
-    public static <T> T toBeanFromStr(String jsonString,Class<T> c){
-        if(objectMapper==null){
-            objectMapper=new ObjectMapper();
-        }
-        try {
-            T t=objectMapper.readValue(jsonString,c);
-            return t;
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-            logger.error("",e);
-        } catch (JsonParseException e) {
-            e.printStackTrace();
-            logger.error("",e);
-        } catch (IOException e) {
-            e.printStackTrace();
-            logger.error("",e);
-        }
-        return null;
-    }
-
-    public static String toStrFromBean(Object obj){
-        if(objectMapper==null){
-            objectMapper=new ObjectMapper();
-        }
-        try {
-            String jsonStr=objectMapper.writeValueAsString(obj);
-            return jsonStr;
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-            logger.error("",e);
-        }
-        return null;
-    }
-
-    /**
-     * 转json并output返回
-     * @param obj
-     * @param response
-     */
-    public static void toStrFromBean(Object obj,HttpServletResponse response)  {
-        response.setContentType("text/html;charset=UTF-8");
-        if(objectMapper==null){
-            objectMapper=new ObjectMapper();
-        }
-        try {
-            objectMapper.writeValue(response.getOutputStream(), obj);
-        } catch (IOException e) {
-            logger.error("",e);
-        }
-    }
-
-}
