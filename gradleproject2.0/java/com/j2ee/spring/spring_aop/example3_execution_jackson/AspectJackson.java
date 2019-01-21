@@ -7,8 +7,9 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component("aspectJackson")
 public class AspectJackson {
-    @Pointcut("execution(* com.fasterxml.jackson.databind.ObjectMapper.writeValue(..))")
+    @Pointcut("execution(public * com.fasterxml.jackson.databind.ObjectMapper.writeValue(..))")
     public void writeValuePointcut() {
+        System.out.println("aspectJackson切面");
     }
 
     @Before(value = "writeValuePointcut()")
