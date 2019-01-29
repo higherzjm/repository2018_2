@@ -1,5 +1,6 @@
 package com.j2ee.spring.spring_jackson;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.utils.JacksonUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -15,6 +17,7 @@ import java.util.*;
 @Controller
 @RequestMapping("jacksonController")
 public class Test_0118 {
+    private static ObjectMapper objectMapper;
     @RequestMapping("index")
     public String index(){
 
@@ -45,7 +48,15 @@ public class Test_0118 {
         set.add("乒乓球");
         mapResult.put("set", set);
 
-        JacksonUtil.toStrFromBean(mapResult,response);
+        response.setContentType("text/html;charset=UTF-8");
+        if(objectMapper==null){
+            objectMapper=new ObjectMapper();
+        }
+        try {
+            objectMapper.writeValue(response.getOutputStream(), mapResult);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return ;
     }
 
