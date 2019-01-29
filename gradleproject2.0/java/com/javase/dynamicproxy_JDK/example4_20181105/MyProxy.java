@@ -1,9 +1,8 @@
-package com.javase.dynamicproxy.example4_20181105;
+package com.javase.dynamicproxy_JDK.example4_20181105;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.util.UUID;
 
 /**
  * Created by zjm on 2018/11/5.

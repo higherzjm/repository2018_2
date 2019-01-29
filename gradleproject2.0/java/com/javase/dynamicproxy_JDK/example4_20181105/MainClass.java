@@ -1,8 +1,6 @@
-package com.javase.dynamicproxy.example4_20181105;
+package com.javase.dynamicproxy_JDK.example4_20181105;
 
 import org.junit.Test;
-
-import java.lang.reflect.Modifier;
 
 /**
  * 接口代理

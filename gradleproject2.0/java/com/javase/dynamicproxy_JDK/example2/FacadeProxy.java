@@ -1,4 +1,4 @@
-package com.javase.dynamicproxy.example2;
+package com.javase.dynamicproxy_JDK.example2;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;  

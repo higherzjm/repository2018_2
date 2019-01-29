@@ -1,4 +1,4 @@
-package com.javase.dynamicproxy.example1;
+package com.javase.dynamicproxy_JDK.example1;
 
 /**
  * Created by zjm on 2018/1/13.

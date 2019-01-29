@@ -1,4 +1,4 @@
-package com.javase.dynamicproxy.example1;
+package com.javase.dynamicproxy_JDK.example1;
 
 import org.junit.Test;
 import sun.misc.ProxyGenerator;

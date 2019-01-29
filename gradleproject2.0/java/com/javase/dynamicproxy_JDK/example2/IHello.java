@@ -1,4 +1,4 @@
-package com.javase.dynamicproxy.example2;
+package com.javase.dynamicproxy_JDK.example2;
 
 public interface IHello {
     String say(String aa);  
