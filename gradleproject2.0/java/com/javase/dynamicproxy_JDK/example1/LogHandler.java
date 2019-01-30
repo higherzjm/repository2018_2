@@ -25,6 +25,7 @@ public class LogHandler implements InvocationHandler {
         System.out.println("method name:"+method.getName());
         System.out.println("method args:"+ Arrays.toString(args));
         Object ret=method.invoke(obj,args);
+        ret=Integer.parseInt(ret.toString())*100;//单位是美分，后置结果乘以*100
         System.out.println("调用后");
         return ret;
     }

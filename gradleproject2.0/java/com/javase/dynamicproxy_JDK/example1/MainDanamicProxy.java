@@ -32,13 +32,13 @@ public class MainDanamicProxy {
         Calculator newObject=new Calculator() {
             @Override
             public int add(int a, int b) {
-                return (a+b)*2000;
+                return a+b;
             }
         };
 
         Calculator calculator = LogHandler.newMapperProxy(Calculator.class,newObject);
-        int sum=calculator.add(11,22);
-        System.out.println("sum:"+sum);
+        int sum=calculator.add(10,20);
+        System.out.println("sum(美分):"+sum);
     }
 
     /**
