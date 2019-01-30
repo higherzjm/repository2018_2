@@ -5,6 +5,7 @@ import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 /**
  * Created by zjm on 2019/1/30.
@@ -22,6 +23,10 @@ public class CalculatorCgLIB implements MethodInterceptor {
     @Override
     public Object intercept(Object object, Method method, Object[] args, MethodProxy proxy) throws Throwable {
         System.out.println("事务开始。。。");
+        System.out.println("object name:"+object.getClass());
+        System.out.println("method name:"+method.getName());
+        System.out.println("MethodProxy proxy:"+proxy.getSuperName());
+        System.out.println("method args:"+ Arrays.toString(args));
         Object result = proxy.invokeSuper(object, args);
         System.out.println("事务结束。。。");
         result=Integer.parseInt(result.toString())*100;//单位是美分，后置结果乘以*100
