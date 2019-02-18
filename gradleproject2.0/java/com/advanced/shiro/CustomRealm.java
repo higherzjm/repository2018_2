@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomRealm extends AuthorizingRealm {
+    public CustomRealm() {
+        System.out.println("初始化CustomRealm");
+    }
 
     /**
      * 认证

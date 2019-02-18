@@ -52,7 +52,7 @@ public class ShiroTest {
         // 读取 shiro.ini 文件内容
         Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:"+realmName);
         IniSecurityManagerFactory factory2 = new IniSecurityManagerFactory("classpath:"+realmName);
-        SecurityManager securityManager = factory2.getInstance();
+        SecurityManager securityManager = factory2.getInstance();//这边会初始化CustomRealm
         SecurityUtils.setSecurityManager(securityManager);
 
         Subject currentUser = SecurityUtils.getSubject();
