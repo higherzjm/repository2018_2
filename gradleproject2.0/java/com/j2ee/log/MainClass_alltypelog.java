@@ -23,7 +23,7 @@ public class MainClass_alltypelog {
     }
 
     /**
-     * 白色字体，跟JCL格式一样
+     * JCL
      */
     @Test
     public  void test2_log4j(){
@@ -33,7 +33,6 @@ public class MainClass_alltypelog {
 
     /**
      * Jakarta  Commons-logging（JCL）是apache最早提供的日志的门面接口。提供简单的日志实现以及日志解耦功能。
-     * 白色字体，跟log4j格式一样
      */
     @Test
     public  void test3_commonsLog(){
@@ -43,7 +42,6 @@ public class MainClass_alltypelog {
 
     /**
      *简单日志门面(Simple Logging Facade for Java)
-     * 白色字体,，跟上面两种格式一样
      */
     @Test
     public  void test4_slf4jLog(){
