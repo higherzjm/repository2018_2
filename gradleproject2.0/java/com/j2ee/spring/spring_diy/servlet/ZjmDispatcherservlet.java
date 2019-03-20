@@ -15,8 +15,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * Created by zjm on 2019/3/18.
@@ -26,28 +28,51 @@ public class ZjmDispatcherservlet extends HttpServlet{
     private Properties contextConfig=new Properties();
     private List<String> classNames=new ArrayList<>();
     private Map<Object,Object>  ioc=new HashMap<>();
-    @Override
+    private List<Handler> handlerMapping=new ArrayList<Handler>();
+
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this. doPost(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        try {
+            doDispatcher(req,resp);
+        }catch (Exception e){
+            resp.getWriter().write("500"+e.getStackTrace());
+        }
+
+    }
+
+    private void doDispatcher(HttpServletRequest req, HttpServletResponse resp) throws  Exception{
+        String  uri=req.getRequestURI();
+        String  contextPath=req.getContextPath();
+        uri=uri.replace(contextPath,"").replaceAll("/+","/");
+        if (!handlerMapping.contains(new Handler())){
+            resp.getWriter().write("404  not  found!!");
+        }
+        Handler handler=this.handlerMapping.get(0);
+        Map<String, String[]> params=req.getParameterMap();
+
     }
 
     @Override
-    public void init(ServletConfig config) throws ServletException {
-        //1 加载配置文件
-        doLoadConfig(config.getInitParameter("contextConfigLocation"));
-       //2 扫描到所有的相关类
-        doScanner(contextConfig.getProperty("scanPackage"));
-       //3 初始化所有相关的类
-        doInstance();
-       //4 实现自动化的依赖注入
-        doAutowired();
-        //5 初始化HandlerMapping
-        initHandlerMapping();
+    public void init(ServletConfig config){
+        try {
+            //1 加载配置文件
+            doLoadConfig(config.getInitParameter("contextConfigLocation"));
+           //2 扫描到所有的相关类
+            doScanner(contextConfig.getProperty("scanPackage"));
+           //3 初始化所有相关的类
+            doInstance();
+           //4 实现自动化的依赖注入
+            doAutowired();
+            //5 初始化HandlerMapping
+            initHandlerMapping();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -57,15 +82,23 @@ public class ZjmDispatcherservlet extends HttpServlet{
         }
         for (Map.Entry<Object,Object> entry:ioc.entrySet()) {
             Class<?>  clazz=entry.getValue().getClass();
-            if (!clazz.isAnnotationPresent(ZjmController.class)){
-                continue;
-            }
+            if (!clazz.isAnnotationPresent(ZjmController.class)){continue;}
             String  baseUrl="";
             if (clazz.isAnnotationPresent(ZjmRequestMapping.class)){
                 ZjmRequestMapping zjmRequestMapping=clazz.getAnnotation(ZjmRequestMapping.class);
                 baseUrl=zjmRequestMapping.value();
-
             }
+
+            for (Method method:clazz.getMethods()){
+                if (!method.isAnnotationPresent(ZjmRequestMapping.class)){ continue;}
+                ZjmRequestMapping zjmRequestMapping=method.getAnnotation(ZjmRequestMapping.class);
+                String  regex=(baseUrl+"/"+zjmRequestMapping.value()).replaceAll("/+","/");
+                Pattern pattern=Pattern.compile(regex);
+                handlerMapping.add(new Handler(entry.getValue(),method,pattern));
+                System.out.println("mapped:"+regex+","+method);
+            }
+
+
         }
     }
 
@@ -161,7 +194,7 @@ public class ZjmDispatcherservlet extends HttpServlet{
         
     }
 
-    private void doLoadConfig(String  contextConfigLocation) {
+    private void doLoadConfig(String  contextConfigLocation) throws Exception{
         InputStream is=this.getClass().getClassLoader().getResourceAsStream(contextConfigLocation);
         try {
             contextConfig.load(is);
@@ -177,4 +210,23 @@ public class ZjmDispatcherservlet extends HttpServlet{
             }
         }
     }
+
+    //内部类
+    private class Handler{
+        protected Object  controller;//保存方法对应的实例
+        protected Method  method;//保存实例映射的方法
+        protected Pattern pattern;
+        protected Map<String,Integer> paramIndexMapping;//参数顺序
+
+        public Handler(Object controller, Method method, Pattern pattern) {
+            this.controller = controller;
+            this.method = method;
+            this.pattern = pattern;
+        }
+
+        public Handler() {
+        }
+    }
 }
+
+
