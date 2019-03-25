@@ -9,9 +9,9 @@
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"+request.getServerName() + ":" + request.getServerPort() + path + "/style/";
-    System.out.println("basePath:"+basePath);
+    //System.out.println("basePath:"+basePath);
     String basePath2 = request.getScheme() + "://"+request.getServerName() + ":" + request.getServerPort() + path + "/";
-    System.out.println("basePath2:"+basePath2);
+    //System.out.println("basePath2:"+basePath2);
 %>
 <html>
 <head>
@@ -22,7 +22,7 @@
         function test1(value) {
             $.ajax( {
                 type : "POST",//(默认: "GET") 请求方式 ("POST" 或 "GET")，
-                url : "<%=basePath2%>springaopmaincontroller/test1.do?throwException="+value,
+                url : "<%=basePath2%>springaopmaincontroller/test1.do?value="+value,
                 data : "",
                 async: false,
                 dataType : "json",
@@ -87,8 +87,9 @@
     </script>
 </head>
 <body style="text-align: left;margin-top: 20px">
-<input type="button" onclick="test1(true)" value="测试1_execution切入点目标代码存在异常的情况"/><br><br>
-<input type="button" onclick="test1(false)" value="测试1_execution切入点目标代码正常执行的情况"/><br><br>
+<input type="button" onclick="test1(0)" value="测试1_execution切入点目标代码不进行跳转的情况"/><br><br>
+<input type="button" onclick="test1(1)" value="测试1_execution切入点目标代码存在异常的情况"/><br><br>
+<input type="button" onclick="test1(2)" value="测试1_execution切入点目标代码正常执行的情况"/><br><br>
 <input type="button" onclick="test2('张三')" value="测试2_execution切入点目标代码正常执行的情况"/><br><br>
 <input type="button" onclick="test2('李四')" value="测试2_execution切入点目标代码存在异常的情况"/><br><br>
 <input type="button" onclick="test3()" value="测试3_不在切入点的情况"/><br><br>

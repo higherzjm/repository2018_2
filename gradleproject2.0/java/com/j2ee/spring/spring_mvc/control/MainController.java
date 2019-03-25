@@ -44,7 +44,7 @@ public class MainController {
     //http://localhost:8080/gradleproject2.0/MainController/mainmethod.do
     @RequestMapping(value = "mainmethod",method = RequestMethod.GET,produces = {"text/html;charset=utf-8"})
     public String mainmethod(HttpServletRequest request, HttpServletResponse response){
-        logger.info("登入");
+       // logger.info("登入");
         return "menu/index";
     }
 

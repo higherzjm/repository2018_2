@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 
 /**
  * Created by zjm on 2019/1/3.
@@ -23,15 +24,18 @@ public class SpringAopMainController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/test1", method = RequestMethod.POST)
     @ResponseBody
-    public Result test(@RequestParam boolean throwException) throws Exception {
+    public Result test(@RequestParam String value,HttpServletRequest request,HttpServletResponse response) throws Exception {
+
+       String value2= (String) request.getAttribute("value");//获取拦截器设置的参数
+       String value3=request.getParameter("value");
         // 示例1，目标方法抛出异常的情况
-        if (throwException) {
-            System.out.println("出现异常了");
+        if ("1".equals(value)) {
+            System.out.println(new Date()+":出现异常了 value2:"+value2+";value:"+value);
             throw new Exception("出现异常了");
         }
 
         // 示例 2，目标方法执行正常的情况
-        System.out.println("test OK");
+        System.out.println(new Date()+": test OK value2:"+value2+";value:"+value);
         return new Result() {{
             this.setId(111);
             this.setName("my name is allen ");
