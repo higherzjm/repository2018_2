@@ -30,7 +30,7 @@ System.out.println("basePath2:"+basePath2);
     <div  class="nav" align="left" style="width: 200px">
         <ul>
             <li class="nav-item">
-                <a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span style="display: block">1</span><i class="my-icon nav-more"></i></a>
+                <a href="javascript:;"><i class="my-icon nav-icon icon_1"></i><span style="display: block">后端系列</span><i class="my-icon nav-more"></i></a>
                 <ul>
                     <li><a href="<%=basePath2%>MainController/springmvcmain.do" TARGET="contentiframe"><span>springmvc</span></a></li>
                     <li><a href="<%=basePath2%>springInterceptorController/interceptormethod.do?date=20190103&name='张三'" TARGET="contentiframe"><span>spring_Interceptor</span></a></li>
@@ -47,7 +47,7 @@ System.out.println("basePath2:"+basePath2);
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="javascript:;"><i class="my-icon nav-icon icon_2"></i><span style="display: block">2</span><i class="my-icon nav-more"></i></a>
+                <a href="javascript:;"><i class="my-icon nav-icon icon_2"></i><span style="display: block">通讯系列</span><i class="my-icon nav-more"></i></a>
                 <ul>
                     <li><a href="<%=basePath2%>static/jsp/redis.jsp" TARGET="contentiframe"><span>redis</span></a></li>
                     <li><a href="<%=basePath2%>websocketcontroller/index.do" TARGET="contentiframe"><span>websocket</span></a></li>
@@ -58,7 +58,7 @@ System.out.println("basePath2:"+basePath2);
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span style="display: block">3</span><i class="my-icon nav-more"></i></a>
+                <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span style="display: block">前端系列</span><i class="my-icon nav-more"></i></a>
                 <ul>
                     <li><a href="javascript:;"><span>javascript</span></a></li>
                     <li><a href="javascript:;"><span>jquery</span></a></li>
@@ -67,7 +67,7 @@ System.out.println("basePath2:"+basePath2);
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span style="display: block">4</span><i class="my-icon nav-more"></i></a>
+                <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span style="display: block">关系型数据库</span><i class="my-icon nav-more"></i></a>
                 <ul>
                     <li><a href="javascript:;"><span>oracle</span></a></li>
                     <li><a href="javascript:;"><span>mysql</span></a></li>
@@ -75,7 +75,7 @@ System.out.println("basePath2:"+basePath2);
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span style="display: block">5</span><i class="my-icon nav-more"></i></a>
+                <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span style="display: block">非关系型数据库</span><i class="my-icon nav-more"></i></a>
                 <ul>
                     <li><a href="javascript:;"><span>mongodb</span></a></li>
                     <li><a href="javascript:;"><span>其他</span></a></li>
