@@ -37,13 +37,15 @@ public class MyInterceptor implements HandlerInterceptor {
             Object object) throws Exception {
 
         String  servletPath=request.getServletPath();
+        Map<String,String[]>  datas=request.getParameterMap();
         if ("/springaopmaincontroller/test1.do".equals(servletPath)){
-            System.out.println(new Date()+":preHandle请求前:"+request.getServletPath()+";ParameterMap:"+request.getParameterMap());
             String value=request.getParameter("value");
+            System.out.println(new Date()+":preHandle请求前:"+servletPath+";ParameterMap:"+datas+";value:"+value);
+          //读取客户端传的参数值
             if ("0".equals(value)){
                 return false;//无法进行成功跳转
             }else if ("1".equals(value)){//目标代码存在异常的情况
-                request.setAttribute("value","the value of update");
+                request.setAttribute("value","the value of update");//设置参数值
                 return true;
             }else if ("2".equals(value)){//目标代码正常执行的情况
                 return true;
@@ -52,8 +54,9 @@ public class MyInterceptor implements HandlerInterceptor {
 
 
 
-        Map<String,String[]>  datas=request.getParameterMap();
-        if ("springaopmaincontroller/test2.do".equals(request.getServletPath())){
+
+        if ("/springaopmaincontroller/test2.do".equals(servletPath)){
+            System.out.println(new Date()+":preHandle请求前:"+servletPath+";ParameterMap:"+datas);
             System.out.println(new Date()+":springaopmaincontroller/test2.do-------->name:"+request.getParameter("name")+";age:"+request.getParameter("age"));
             return true;
         }else {

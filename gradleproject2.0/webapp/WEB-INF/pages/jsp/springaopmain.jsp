@@ -71,7 +71,7 @@
 
         function test4() {
             $.ajax( {
-                type : "POST",//(默认: "GET") 请求方式 ("POST" 或 "GET")，
+                type : "GET",//(默认: "GET") 请求方式 ("POST" 或 "GET")，
                 url : "<%=basePath2%>addresscontroller/getaddress.do",
                 data :'',
                 async: false,

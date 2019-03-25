@@ -85,7 +85,7 @@
     </bean>
 
     <mvc:interceptors>
-        <!--对所有请求进行拦-->
+        <!--对所有请求进行拦截-->
         <bean class="com.j2ee.spring.spring_interceptor.MyInterceptor"/>
     </mvc:interceptors>
 </beans>

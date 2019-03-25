@@ -26,16 +26,16 @@ public class SpringAopMainController {
     @ResponseBody
     public Result test(@RequestParam String value,HttpServletRequest request,HttpServletResponse response) throws Exception {
 
-       String value2= (String) request.getAttribute("value");//获取拦截器设置的参数
-       String value3=request.getParameter("value");
+       String value2= (String) request.getAttribute("value");//读取拦截器设置的参数值
+       String value3=request.getParameter("value");//读取客户端传的参数值
         // 示例1，目标方法抛出异常的情况
         if ("1".equals(value)) {
-            System.out.println(new Date()+":出现异常了 value2:"+value2+";value:"+value);
+            System.out.println(new Date()+":出现异常了 value2:"+value2+";value:"+value+";value3:"+value3);
             throw new Exception("出现异常了");
         }
 
         // 示例 2，目标方法执行正常的情况
-        System.out.println(new Date()+": test OK value2:"+value2+";value:"+value);
+        System.out.println(new Date()+": test OK value2:"+value2+";value:"+value+";value3:"+value3);
         return new Result() {{
             this.setId(111);
             this.setName("my name is allen ");
