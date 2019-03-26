@@ -6,13 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class MyInterceptor implements HandlerInterceptor {
-
+    private static Properties properties = new Properties();
     @Override
     public void afterCompletion(HttpServletRequest httpRequest,
             HttpServletResponse httpResponse, Object arg2, Exception arg3)
