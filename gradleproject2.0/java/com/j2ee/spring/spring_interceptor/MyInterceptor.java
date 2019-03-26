@@ -36,6 +36,8 @@ public class MyInterceptor implements HandlerInterceptor {
             Object object) throws Exception {
 
         String  servletPath=request.getServletPath();
+        String pathInfo=request.getPathInfo();
+        System.out.println("pathInfo:"+pathInfo);
         Map<String,String[]>  datas=request.getParameterMap();
         if ("/springaopmaincontroller/test1.do".equals(servletPath)){
             String value=request.getParameter("value");

@@ -11,7 +11,7 @@ public class Test20190326 {
      */
     @Test
     public void  test1(){
-       String  str="><!#$5^&*@";
+       String  str="'>< =&|%*";
         for(int i=0;i<str.length();i++){
             String subStr = str.substring(i, i+1);
             System.out.println("subStr:"+subStr);
