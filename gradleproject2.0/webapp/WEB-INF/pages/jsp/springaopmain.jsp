@@ -41,7 +41,7 @@
             $.ajax( {
                 type : "POST",//(默认: "GET") 请求方式 ("POST" 或 "GET")，
                 url : "<%=basePath2%>springaopmaincontroller/test2.do",
-                data : {name:name,age:30},
+                data : {name:name,age:30,website:"www.#$%ddabc.com",txnNo:"2019022622222"},
                 async: false,
                 dataType : "json",
                 success : function(data) {

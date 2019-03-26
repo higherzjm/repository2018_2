@@ -7,7 +7,9 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class MyInterceptor implements HandlerInterceptor {
 
@@ -56,6 +58,18 @@ public class MyInterceptor implements HandlerInterceptor {
 
 
         if ("/springaopmaincontroller/test2.do".equals(servletPath)){
+            for(String key:datas.keySet()){
+                System.out.println("KEY:"+key);
+            }
+            Set<Map.Entry<String, String[]>> set = datas.entrySet();
+            Iterator<Map.Entry<String, String[]>> it = set.iterator();
+            while (it.hasNext()) {
+                Map.Entry<String, String[]> entry = it.next();
+                System.out.println("KEY:"+entry.getKey());
+                for (String i : entry.getValue()) {
+                    System.out.println("VALUE:"+i);
+                }
+            }
             System.out.println(new Date()+":preHandle请求前:"+servletPath+";ParameterMap:"+datas);
             System.out.println(new Date()+":springaopmaincontroller/test2.do-------->name:"+request.getParameter("name")+";age:"+request.getParameter("age"));
             return true;
