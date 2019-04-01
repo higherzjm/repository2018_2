@@ -26,11 +26,16 @@ public class rabbitmq_Producer {
         try {
             factory = new ConnectionFactory();
             //设置用户、和密码、端口号、IP地址、和虚拟机名称
-            factory.setUsername("root");
+           /* factory.setUsername("root");
             factory.setPassword("123456");
             factory.setHost("192.168.1.11");
             factory.setPort(5672);
-            factory.setVirtualHost("root_vhost");
+            factory.setVirtualHost("root_vhost");*/
+            factory.setUsername("guest");
+            factory.setPassword("guest");
+            factory.setHost("localhost");
+            factory.setPort(5672);
+            //factory.setVirtualHost("root_vhost");
              // 建立到代理服务器到连接
             connection = factory.newConnection();
             channel = connection.createChannel();

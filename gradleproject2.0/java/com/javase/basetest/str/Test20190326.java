@@ -17,4 +17,15 @@ public class Test20190326 {
             System.out.println("subStr:"+subStr);
         }
     }
+
+    /**
+     * 按指定符号切分字符串
+     */
+    @Test
+    public void  test2(){
+        String  str="CardholderEmail/getEmailsByTxId;CardholderEmail/getEmailContent";
+        for (String splitStr:str.split(";")){
+            System.out.println("splitStr:"+splitStr);
+        }
+    }
 }
