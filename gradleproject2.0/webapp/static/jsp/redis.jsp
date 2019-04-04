@@ -10,11 +10,15 @@
     <title>Title</title>
     <script type="text/javascript">
         function setingupalltypemsg() {
+            var  shcoolName=document.getElementById("schoolName").value;;
+            var  majorName=document.getElementById("majorName").value;;
+            console.info("shcoolName:"+shcoolName)
+            console.info("majorName:"+majorName)
             console.info("redis  发送消息")
             $.ajax( {
                 type : "POST",//(默认: "GET") 请求方式 ("POST" 或 "GET")，
-                url : "send_redis_merssagecontroller/setingupalltypemsg.do",
-                data : "",
+                url : "send_redis_merssagecontroller/setingupalltypemsg.do?majorName="+majorName,
+                data : {shcoolName:shcoolName},
                 async: false,
                 dataType : "text",
                 success : function(data) {
@@ -66,6 +70,8 @@
     </script>
 </head>
 <body style="text-align: left;padding: 10px 0 0 10px">
+学校名称：<input type="text"  id="schoolName"/><br/>
+专业名称：<input type="text"  id="majorName"/><br/><<br/>
 <input type="button" value="redis设置各种类型的数据格式" onclick="setingupalltypemsg()"/>&nbsp;
 <br/><br/>
 <input type="button" value="redis获取各种类型的数据格式" onclick="getalltypemsg()"/>

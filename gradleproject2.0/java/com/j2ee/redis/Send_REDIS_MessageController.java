@@ -1,18 +1,22 @@
 package com.j2ee.redis;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.*;
 
 @Controller
 @RequestMapping(value ="/send_redis_merssagecontroller")
 public class Send_REDIS_MessageController {
-
+    private Logger logger = LoggerFactory.getLogger(Send_REDIS_MessageController.class);
     @Resource(name="redisTemplate")
     private RedisTemplate<String, String> redisTemplate;
 
@@ -52,8 +56,13 @@ public class Send_REDIS_MessageController {
     //http://localhost:8080/repository2018_2/send_redis_merssagecontroller/setingupalltypemsg.do
     @RequestMapping(value = "setingupalltypemsg")
     @ResponseBody
-    public  String setingUpAllTypeMessage(){
+    public  String setingUpAllTypeMessage(HttpServletRequest request,@RequestParam("shcoolName")String shcoolName){
        try{
+           String majorName=request.getParameter("majorName");
+           logger.info("shcoolName:"+shcoolName);
+           logger.info("majorName:"+majorName);
+           redisTemplate.opsForValue().set("shcoolName",shcoolName);
+           redisTemplate.opsForValue().set("majorName",majorName);
            redisTemplate.opsForValue().set("name","sunday");//设置值
            redisTemplate.opsForSet().add("set_123", "set1","set2","set3");//设置set集合
            /**
@@ -101,6 +110,10 @@ public class Send_REDIS_MessageController {
     @RequestMapping(value = "getalltypemsg")
     @ResponseBody
     public  String getAllTypeMessage(){
+        String shcoolName=redisTemplate.opsForValue().get("shcoolName");
+        logger.info("shcoolName:"+shcoolName);
+        String majorName=redisTemplate.opsForValue().get("majorName");
+        logger.info("majorName:"+majorName);
         String name=redisTemplate.opsForValue().get("name");//获取值
         System.out.println("name:"+name);
 
@@ -121,8 +134,8 @@ public class Send_REDIS_MessageController {
         System.out.println("resultMapList:"+resultMapList);
         System.out.println("resultMapSet:"+resultMapSet);
         System.out.println("value:"+value);
-
-        return "name:"+name+";set:"+set+";list:"+list1+";map:"+map;
+         String  ret="name:"+name+";set:"+set+";list:"+list1+";map:"+map+";shcoolName:"+shcoolName+";majorName:"+majorName;
+        return ret;
     }
 
 
