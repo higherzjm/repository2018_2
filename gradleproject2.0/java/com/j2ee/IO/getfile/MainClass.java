@@ -3,10 +3,7 @@ package com.j2ee.IO.getfile;
 import com.javase.A_temporary_test;
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Properties;
 
 /**
@@ -14,7 +11,17 @@ import java.util.Properties;
  */
 public class MainClass {
 
-
+     @Test
+     public void  test4() throws IOException {
+         Properties props = new Properties();
+         props.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("redis.properties"));//从自定义配置文件获取相关参数
+        String port = props.getProperty("redis.port");
+        String host = props.getProperty("redis.host");
+        String timeout = props.getProperty("redis.timeout");
+         System.out.println("port:"+port);
+         System.out.println("host:"+host);
+         System.out.println("timeout:"+timeout);
+     }
     /**
      * 读取项目WEB-INF目录下的text文件
      * @throws Exception
